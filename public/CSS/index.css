@@ -1,0 +1,463 @@
+html {
+    font-family: 'Poppins', sans-serif;
+    font-size: 62.5%;
+}
+
+
+
+
+body {
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    background-color: #1B1B1B;
+}
+
+.nav {
+    background-color: black;
+    color: white;
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+
+}
+
+.links a {
+    text-decoration: none;
+    font-size: 1.5em;
+    color: white;
+}
+
+.underline-hover ::after {
+    content: "";
+    width: 0;
+    height: 0.15em;
+    background-color: rgb(255, 255, 255);
+    display: block;
+
+
+
+}
+
+.underline-hover:hover::after {
+    width: 100%;
+}
+
+.logo {
+    padding-left: 1em;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.logo h1 {
+    font-size: 2em;
+}
+
+
+.imgpstc {
+    background-image: linear-gradient(0deg,
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)), url("../Images/imgprincipal.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    width: auto;
+    height: 60em;
+}
+
+
+.acercade {
+    display: flex;
+    justify-content: space-around;
+    color: #ffffff;
+    background-color: #1B1B1B;
+    padding-bottom: 2em;
+    padding-top: 2em;
+    font-size: 1.2em;
+
+}
+
+
+
+.acercade div h3 {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 2em;
+    margin: 0 0;
+
+}
+
+.acercade {
+    text-align: justify;
+}
+
+
+.gestion {
+    color: #ffffff;
+    background-color: #313131;
+    padding-bottom: 2em;
+    padding-top: 2em;
+    display: flex;
+    font-size: 1.7em;
+}
+
+.gestion h2 {
+    background-color: #313131;
+    margin: 0;
+    color: #ffffff;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.7em;
+    padding-bottom: 0.2em;
+
+}
+
+
+
+.gestion h3 {
+    background-color: #313131;
+    margin: 0;
+    color: #ffffff;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 1.7em;
+    padding-bottom: 0.2em;
+}
+
+.gestion p {
+    text-align: justify;
+}
+
+
+
+.productividad {
+    color: #ffffff;
+    background-color: #1B1B1B;
+    display: flex;
+    font-size: 1.7em;
+    padding-bottom: 2em;
+    padding-top: 2em;
+}
+
+
+
+.productividad h2 {
+    background-color: #1B1B1B;
+    margin: 0;
+    color: #ffffff;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+.productividad p {
+    text-align: justify;
+}
+
+.productividad li::before {
+    content: "\2713";
+    color: green;
+    margin-right: 0.2em;
+    font-size: 1.5em;
+}
+
+
+.productividad li {
+    list-style: none;
+}
+
+
+
+.reportes {
+    color: #ffffff;
+    display: flex;
+    background-color: #313131;
+    font-size: 1.7em;
+    padding-bottom: 2em;
+    padding-top: 2em;
+}
+
+
+.reportes h2 {
+    background-color: #313131;
+    margin: 0;
+    color: #ffffff;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+.reportes p {
+    text-align: justify;
+}
+
+.reportes li::before {
+    content: "\2713";
+    color: green;
+    margin-right: 0.2em;
+    font-size: 1.5em;
+}
+
+
+.reportes li {
+    list-style: none;
+}
+
+
+
+.escapar {
+    color: #ffffff;
+    display: flex;
+    background-color: #1B1B1B;
+    font-size: 1.7em;
+    padding-bottom: 2em;
+    padding-top: 2em;
+}
+
+.escapar h2 {
+    background-color: #1B1B1B;
+    margin: 0;
+    color: #ffffff;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+.escapar p {
+    text-align: justify;
+}
+
+.card {
+    background-color: rgb(255, 255, 255);
+    width: 95%;
+    font-size: 1.5em;
+    border-radius: 1em;
+    padding-top: 1em;
+    padding-right: 0.2em;
+    padding-left: 0.2em;
+}
+
+
+.card h2 {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.card p {
+    font-size: 1em;
+}
+
+.card li {
+    font-size: 1em;
+}
+
+.card h1 {
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.card small {
+    font-size: 0.5em;
+    color: #616161;
+}
+
+.card button {
+    width: 90%;
+    height: 4em;
+}
+
+.card button h2 {
+    font-size: 1.5em;
+}
+
+
+footer {
+    color: #ffffff;
+    background-color: #000000;
+    text-align: center;
+
+}
+
+footer h3 {
+    background-color: #000000;
+    height: 2em;
+    width: auto;
+    margin: 0;
+    padding: 2em 0;
+}
+
+
+.buscar {
+    background-color: #313131;
+    color: #ffffff;
+    height: 20em;
+}
+
+.titulo {
+    width: 60%;
+    font-size: 3em;
+    font-style: italic;
+
+}
+
+.boton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.boton a {
+    text-decoration: none;
+    transition: none;
+
+}
+
+.boton2 {
+    background-color: #FF0000;
+    border-radius: 0.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    height: 4em;
+
+}
+
+
+.datos h3 {
+    border-radius: 2em;
+    font-size: 1.6em;
+}
+
+.datos input {
+    width: 90%;
+    border-radius: 0.3em;
+    height: 2em;
+    font-size: 1.5em;
+}
+
+.gris {
+    background-color: #313131;
+}
+
+#Planes .h1 {
+    font-size: 3.5em;
+    color: white;
+    font-weight: bold;
+    padding-bottom: 2em;
+    padding-top: 2em;
+
+}
+
+#Planes {
+    background-color: #313131;
+
+}
+
+.carrousel {
+    width: 100%;
+}
+
+.conteCarrousel {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.itemCarrousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.itemCarrouselTarjeta {
+    width: 100%;
+    height: 100%;
+}
+
+.itemCarrouselArrows {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.itemCarrouselArrows>i:hover {
+    cursor: pointer;
+}
+
+#itemCarrousel-1 {
+    background-color: rgb(226, 50, 50);
+}
+
+#itemCarrousel-2 {
+    background-color: rgb(50, 200, 226);
+}
+
+#itemCarrousel-3 {
+    background-color: rgb(200, 226, 50);
+}
+
+.conteCarrouselController {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.conteCarrouselController>a {
+    text-decoration: none;
+    font-size: 2em;
+    color: grey;
+}
+
+.itemCarrouselArrows>a>i {
+    color: white;
+}
+
+.gris2 {
+    background-color: #484848;
+}
+
+.border_r {
+    border-radius: 0.5em;
+}
+
+.formulario_citas input {
+    height: 1.7em;
+    font-size: 1.5em;
+}
+
+.formulario_citas label {
+    font-size: 1.5em;
+    color: white;
+}
+
+
+.formulario_citas div {
+    padding: 0 0.5em;
+}
+
+.formulario_citas select {
+    height: 1.7em;
+    font-size: 1.5em;
+    border: none;
+    stroke: none;
+}
+
+.formulario_citas h1 {
+    color: white;
+    font-weight: bold;
+}
+
+
+.formulario_citas h2 {
+    color: white;
+    font-weight: bold;
+}
