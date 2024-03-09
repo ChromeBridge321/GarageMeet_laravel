@@ -16,3 +16,9 @@ COSAS QUE ME FALTAN POR HACER:
 -darse de alta como tallerer
 -hacer una cita desde la web
 -pagar desde la web
+-realizar la creacion de las demas tablas y hacer sus relaciones
+
+
+ORDEN DE REALIZACION DE PASOS: 
+-Tablas
+-cruds

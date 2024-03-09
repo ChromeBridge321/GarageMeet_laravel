@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('personas', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre',60);
+            $table->string('ap_paterno',60);
+            $table->string('ap_materno',60);
+            $table->string('correo',120)->unique();
+            $table->string('telefono',10)->unique();
+            $table->text('direccion');
             $table->timestamps();
         });
     }
