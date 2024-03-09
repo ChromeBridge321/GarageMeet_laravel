@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('estados', function (Blueprint $table) {
+        Schema::create('marcas', function (Blueprint $table) {
             $table->id();
             $table->string('nombre',60);
+            $table->unsignedBigInteger('modelos_id');
+            $table->foreign('modelos_id')->references('id')->on('modelos')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -23,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('estados');
+        Schema::dropIfExists('marcas');
     }
 };
