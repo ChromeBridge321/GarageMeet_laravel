@@ -1,0 +1,18 @@
+COSAS QUE LLEVO AVANZADO EN MI  PROYECTO:
+-tengo la mayoria de vistas hecha pero no funcionales
+-tengo el inicio de sesion
+-tengo el registro
+
+
+COSAS QUE ME FALTAN POR HACER:
+-la parte de cruds
+-la verificacion de pagos
+-la busqueda de talleres
+-la parte de administrativa reportes y cruds etc
+-verificacion de roles
+-pagar y volverse un administrador
+-no pagar y solo acceder a ver talleres
+-perfil de usuario
+-darse de alta como tallerer
+-hacer una cita desde la web
+-pagar desde la web
