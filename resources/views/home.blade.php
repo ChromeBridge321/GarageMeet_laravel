@@ -79,7 +79,7 @@
                 </div>
             </a>
 
-            <a href="{{route('clientes')}}">
+            <a href="{{route('personas.index')}}">
                 <div class="option">
                     <i title="Clientes"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#ffffff"
                             viewBox="0 0 256 256">

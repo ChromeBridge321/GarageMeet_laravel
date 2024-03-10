@@ -34,3 +34,8 @@ Route::get('/citas', [App\Http\Controllers\CitasController::class, 'index'])->na
 Route::get('/empleados', [App\Http\Controllers\EmpleadosController::class, 'index'])->name('empleados');
 Route::get('/clientes', [App\Http\Controllers\ClientesController::class, 'index'])->name('clientes');
 Route::get('/historial', [App\Http\Controllers\HistorialController::class, 'index'])->name('historial');
+Route::resource('personas', App\Http\Controllers\PersonaController::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
