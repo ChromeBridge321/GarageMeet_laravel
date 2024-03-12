@@ -37,3 +37,4 @@ Route::get('/clientes', [App\Http\Controllers\ClientesController::class, 'index'
 Route::get('/historial', [App\Http\Controllers\HistorialController::class, 'index'])->name('historial');
 
 route::post('/agregar_cliente', [App\Http\Controllers\ClientesController::class, 'store'])->name('clientes.create');
+route::post('/actualizar_cliente', [App\Http\Controllers\ClientesController::class, 'update'])->name('clientes.update');

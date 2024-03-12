@@ -126,15 +126,11 @@
     <div class=" container-fluid p-5">
         <div class="row col-12 d-flex justify-content-center">
             <div class="row d-flex justify-content-end">
-                <div>
-                    @if (session('correto'))
-                        <div id="liveAlertPlaceholder" class=" alert-success"></div>
-                        <button type="button" class="btn btn-primary" id="liveAlertBtn">Show live alert</button>
-                    @endif
-
-                    @if (session('correto'))
-                        <div id="liveAlertPlaceholder" class=" alert-danger"></div>
-                        <button type="button" class="btn btn-primary" id="liveAlertBtn">Show live alert</button>
+                <div class="pt-3 mt-3">
+                    @if (session('correcto'))
+                        <div class="alert bg-success text-white " role="alert">
+                            Datos guardados correctamente
+                        </div>
                     @endif
                 </div>
                 <div class="col-2 d-flex justify-content-end pt-1"><button data-bs-toggle="modal"
@@ -197,7 +193,7 @@
                         </tr>
                     </thead>
                     <tbody class="table-group-divider">
-                        @foreach ($datos as $item)
+                        @foreach ($personas as $item)
                             <tr>
                                 <th scope="row">{{ $item->id }}</th>
                                 <td>{{ $item->nombre }}</td>
@@ -220,19 +216,27 @@
                                                 <button type="button" class=" bg-white btn-close"
                                                     data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
-                                            <form action="">
+                                            <form action="{{ route('clientes.update') }}">
+                                                @csrf
                                                 <div class="modal-body bg-dark">
+                                                    <div class="col-12 d-flex flex-column w-100">
+                                                        <label for=""
+                                                            class="form-label text-bg-dark">ID</label>
+                                                        <input type="text" class="w-100 form-check-input"
+                                                            name="ID" value="{{ $item->id }}">
+                                                    </div>
+
                                                     <div class="col-12 d-flex flex-column w-100">
                                                         <label for=""
                                                             class="form-label text-bg-dark">Nombre</label>
                                                         <input type="text" class="w-100 form-check-input"
-                                                            name="Nombre">
+                                                            name="Nombre" value="{{ $item->nombre }}">
                                                     </div>
 
                                                     <div class="col-12 d-flex flex-column">
                                                         <label for="" class="form-label">Correo</label>
                                                         <input type="email" class="w-100 w-100 form-check-input"
-                                                            name="Correo">
+                                                            name="Correo" value="{{ $item->correo }}">
                                                     </div>
 
 
@@ -240,7 +244,13 @@
                                                     <div class="col-12 d-flex flex-column">
                                                         <label for="" class=" form-label">Telefono</label>
                                                         <input type="number" class="w-100 form-check-input"
-                                                            name="Telefono">
+                                                            name="Telefono" value="{{ $item->telefono }}">
+                                                    </div>
+
+                                                    <div class="col-12 d-flex flex-column">
+                                                        <label for="" class=" form-label">Direccion</label>
+                                                        <input type="number" class="w-100 form-check-input"
+                                                            name="Direccion" value="{{ $item->direccion }}">
                                                     </div>
                                                 </div>
                                             </form>

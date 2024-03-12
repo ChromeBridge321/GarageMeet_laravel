@@ -25,8 +25,8 @@ class ClientesController extends Controller
      */
     public function index()
     {
-        $datos = DB::select('select * from personas order by id desc');
-        return view('index-clientes')->with("datos", $datos);
+        $personas = clientes::all();
+        return view('index-clientes')->with("personas", $personas);
     }
 
     public function store(Request $request)
@@ -37,6 +37,18 @@ class ClientesController extends Controller
         $personas->correo = $request->input('Correo');
         $personas->direccion = $request->input('Direccion');
         $personas->save();
-        return redirect()->back();
+        return redirect()->back()->with('correcto', 'asdadasd');
+    }
+
+
+    public function update(Request $request, $id)
+    {
+        $personas = clientes::find($id);
+        $personas->nombre = $request->input('Nombre');
+        $personas->telefono = $request->input('Telefono');
+        $personas->correo = $request->input('Correo');
+        $personas->direccion = $request->input('Direccion');
+        $personas->update();
+        return redirect()->back()->with('correcto', 'asdadasd');
     }
 }
