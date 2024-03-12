@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ClientesController extends Controller
 {
@@ -23,6 +24,7 @@ class ClientesController extends Controller
      */
     public function index()
     {
-        return view('index-clientes');
+        $datos = DB::select('select * from personas');
+        return view('index-clientes')->with("datos", $datos);
     }
 }
