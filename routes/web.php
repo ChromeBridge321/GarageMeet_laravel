@@ -35,3 +35,5 @@ Route::get('/citas', [App\Http\Controllers\CitasController::class, 'index'])->na
 Route::get('/empleados', [App\Http\Controllers\EmpleadosController::class, 'index'])->name('empleados');
 Route::get('/clientes', [App\Http\Controllers\ClientesController::class, 'index'])->name('clientes');
 Route::get('/historial', [App\Http\Controllers\HistorialController::class, 'index'])->name('historial');
+
+route::post('/agregar_cliente', [App\Http\Controllers\ClientesController::class, 'store'])->name('clientes.create');

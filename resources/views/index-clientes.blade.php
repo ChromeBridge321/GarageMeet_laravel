@@ -123,10 +123,68 @@
 
     </div>
 
-    <div class=" container-fluid d-flex justify-content-center">
+    <div class=" container-fluid p-5">
         <div class="row col-12 d-flex justify-content-center">
-            <div class="col-12 mt-5">
-                <table class="table table-hover">
+            <div class="row d-flex justify-content-end">
+                <div>
+                    @if (session('correto'))
+                        <div id="liveAlertPlaceholder" class=" alert-success"></div>
+                        <button type="button" class="btn btn-primary" id="liveAlertBtn">Show live alert</button>
+                    @endif
+
+                    @if (session('correto'))
+                        <div id="liveAlertPlaceholder" class=" alert-danger"></div>
+                        <button type="button" class="btn btn-primary" id="liveAlertBtn">Show live alert</button>
+                    @endif
+                </div>
+                <div class="col-2 d-flex justify-content-end pt-1"><button data-bs-toggle="modal"
+                        data-bs-target="#ModalAnadir" type="button" class=" btn btn-primary">Añadir</button></div>
+            </div>
+            <!-- Modal para anadir -->
+            <div class="modal fade" id="ModalAnadir" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header bg-dark">
+                            <h1 class="modal-title fs-5 text-white" id="exampleModalLabel">Añadir Nuevo Cliente</h1>
+                            <button type="button" class=" bg-white btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body bg-dark">
+                            <form action="{{ route('clientes.create') }}" method="post">
+                                @csrf
+                                <div class="col-12 d-flex flex-column w-100">
+                                    <label for="" class="form-label text-bg-dark">Nombre</label>
+                                    <input type="text" class="w-100 form-check-input" name="Nombre">
+                                </div>
+
+                                <div class="col-12 d-flex flex-column">
+                                    <label for="" class="form-label">Correo</label>
+                                    <input type="email" class="w-100 w-100 form-check-input" name="Correo">
+                                </div>
+
+                                <div class="col-12 d-flex flex-column">
+                                    <label for="" class=" form-label">Telefono</label>
+                                    <input type="number" class="w-100 form-check-input" name="Telefono">
+                                </div>
+
+                                <div class="col-12 d-flex flex-column">
+                                    <label for="" class=" form-label">Direccion</label>
+                                    <input type="text" class="w-100 form-check-input" name="Direccion">
+                                </div>
+                                <div class="modal-footer bg-dark">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Cerrar</button>
+                                    <button type="submit" class="btn btn-primary">Añadir</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 mt-2 table-responsive">
+                <table class="table table-hover table-dark ">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
@@ -134,6 +192,8 @@
                             <th scope="col">Correo</th>
                             <th scope="col">Telefono</th>
                             <th scope="col">Direccion</th>
+                            <th scope="col">Accion</th>
+
                         </tr>
                     </thead>
                     <tbody class="table-group-divider">
@@ -144,6 +204,54 @@
                                 <td>{{ $item->correo }}</td>
                                 <td>{{ $item->telefono }}</td>
                                 <td>{{ $item->direccion }}</td>
+                                <th><button data-bs-toggle="modal" data-bs-target="#ModalEditar" type="button"
+                                        class="btn btn-primary">Editar</button>
+                                    <button type="button" class="btn btn-danger">Eliminar</button>
+                                </th>
+                                <!-- Modal para editar -->
+                                <div class="modal fade" id="ModalEditar" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header bg-dark">
+                                                <h1 class="modal-title fs-5 text-white" id="exampleModalLabel">
+                                                    Cliente:
+                                                    {{ $item->nombre }}</h1>
+                                                <button type="button" class=" bg-white btn-close"
+                                                    data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <form action="">
+                                                <div class="modal-body bg-dark">
+                                                    <div class="col-12 d-flex flex-column w-100">
+                                                        <label for=""
+                                                            class="form-label text-bg-dark">Nombre</label>
+                                                        <input type="text" class="w-100 form-check-input"
+                                                            name="Nombre">
+                                                    </div>
+
+                                                    <div class="col-12 d-flex flex-column">
+                                                        <label for="" class="form-label">Correo</label>
+                                                        <input type="email" class="w-100 w-100 form-check-input"
+                                                            name="Correo">
+                                                    </div>
+
+
+
+                                                    <div class="col-12 d-flex flex-column">
+                                                        <label for="" class=" form-label">Telefono</label>
+                                                        <input type="number" class="w-100 form-check-input"
+                                                            name="Telefono">
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <div class="modal-footer bg-dark">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Cerrar</button>
+                                                <button type="submit" class="btn btn-primary">Guardar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </tr>
                         @endforeach
 
@@ -155,6 +263,7 @@
 
 
     <script src="{{ asset('CSS/Bootstrap/js/script.js') }}"></script>
+    <script src="{{ asset('CSS/Bootstrap/js/bootstrap.min.js') }}"></script>
 </body>
 
 </html>
