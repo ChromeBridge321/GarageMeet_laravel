@@ -31,24 +31,67 @@ class ClientesController extends Controller
 
     public function store(Request $request)
     {
-        $personas = new clientes;
-        $personas->nombre = $request->input('Nombre');
-        $personas->telefono = $request->input('Telefono');
-        $personas->correo = $request->input('Correo');
-        $personas->direccion = $request->input('Direccion');
-        $personas->save();
-        return redirect()->back()->with('correcto', 'asdadasd');
+        try {
+            $sql = DB::update("insert into personas (nombre,telefono,correo,direccion,id) values (?,?,?,?,?) ", [
+                $request->Nombre,
+                $request->Telefono,
+                $request->Correo,
+                $request->Direccion,
+                $request->ID,
+
+            ]);
+        } catch (\Throwable $th) {
+            $sql = 0;
+        }
+        if ($sql == true) {
+            return back()->with('correcto', 'persona creo correctamente');
+        } else {
+            return back()->with('incorrecto', 'producto creo incorrectamente');
+        }
     }
 
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $personas = clientes::find($id);
-        $personas->nombre = $request->input('Nombre');
-        $personas->telefono = $request->input('Telefono');
-        $personas->correo = $request->input('Correo');
-        $personas->direccion = $request->input('Direccion');
-        $personas->update();
-        return redirect()->back()->with('correcto', 'asdadasd');
+        try {
+            $sql = DB::update("update personas set nombre=?,telefono=?,correo=?,direccion=? where id=? ", [
+                $request->Nombre,
+                $request->Telefono,
+                $request->Correo,
+                $request->Direccion,
+                $request->ID,
+
+            ]);
+
+            if ($sql == 0) {
+                $sql = 1;
+            }
+        } catch (\Throwable $th) {
+            $sql = 0;
+        }
+        if ($sql == true) {
+            return back()->with('editrue', 'persona modificado correctamente');
+        } else {
+            return back()->with('editfalse', 'persona modificado incorrectamente');
+        }
+    }
+
+
+    public function delete($id)
+    {
+        try {
+            $sql = DB::delete("delete from personas where id=$id");
+
+            if ($sql == 0) {
+                $sql = 1;
+            }
+        } catch (\Throwable $th) {
+            $sql = 0;
+        }
+        if ($sql == true) {
+            return back()->with('deletetrue', 'persona ha sido eliminada correctamente');
+        } else {
+            return back()->with('deletefalse', 'persona no ha sido eliminada');
+        }
     }
 }

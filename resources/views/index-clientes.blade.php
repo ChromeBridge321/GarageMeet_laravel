@@ -132,6 +132,40 @@
                             Datos guardados correctamente
                         </div>
                     @endif
+
+                    @if (session('incorrecto'))
+                        <div class="alert bg-danger text-white " role="alert">
+                            Los datos no se han podido guardar
+                        </div>
+                    @endif
+
+                    @if (session('editrue'))
+                        <div class="alert bg-success text-white " role="alert">
+                            Datos actualizados correctamente
+                        </div>
+                    @endif
+
+                    @if (session('editfalse'))
+                        <div class="alert bg-danger text-white " role="alert">
+                            Datos no actualizados correctamente
+                        </div>
+                    @endif
+
+                    @if (session('deletetrue'))
+                        <div class="alert bg-success text-white " role="alert">
+                            Cliente ha sido eliminado correctamente
+                        </div>
+                    @endif
+
+                    <script>
+                        var res = function() {
+
+                            var not = confirm("estas seguro que quieres eliminar el registro?");
+                            return not;
+
+                        }
+                    </script>
+
                 </div>
                 <div class="col-2 d-flex justify-content-end pt-1"><button data-bs-toggle="modal"
                         data-bs-target="#ModalAnadir" type="button" class=" btn btn-primary">Añadir</button></div>
@@ -200,12 +234,13 @@
                                 <td>{{ $item->correo }}</td>
                                 <td>{{ $item->telefono }}</td>
                                 <td>{{ $item->direccion }}</td>
-                                <th><button data-bs-toggle="modal" data-bs-target="#ModalEditar" type="button"
-                                        class="btn btn-primary">Editar</button>
-                                    <button type="button" class="btn btn-danger">Eliminar</button>
+                                <th><button data-bs-toggle="modal" data-bs-target="#ModalEditar{{ $item->id }}"
+                                        type="button" class="btn btn-primary">Editar</button>
+                                    <a type="button" class="btn btn-danger" onclick="return res()"
+                                        href="{{ route('clientes.delete', $item->id) }}">Eliminar</a>
                                 </th>
                                 <!-- Modal para editar -->
-                                <div class="modal fade" id="ModalEditar" tabindex="-1"
+                                <div class="modal fade" id="ModalEditar{{ $item->id }}" tabindex="-1"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -216,7 +251,7 @@
                                                 <button type="button" class=" bg-white btn-close"
                                                     data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
-                                            <form action="{{ route('clientes.update') }}">
+                                            <form action="{{ route('clientes.update') }}" method="POST">
                                                 @csrf
                                                 <div class="modal-body bg-dark">
                                                     <div class="col-12 d-flex flex-column w-100">
@@ -249,16 +284,17 @@
 
                                                     <div class="col-12 d-flex flex-column">
                                                         <label for="" class=" form-label">Direccion</label>
-                                                        <input type="number" class="w-100 form-check-input"
+                                                        <input type="text" class="w-100 form-check-input"
                                                             name="Direccion" value="{{ $item->direccion }}">
                                                     </div>
                                                 </div>
+                                                <div class="modal-footer bg-dark">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Cerrar</button>
+                                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                                </div>
                                             </form>
-                                            <div class="modal-footer bg-dark">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Cerrar</button>
-                                                <button type="submit" class="btn btn-primary">Guardar</button>
-                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
