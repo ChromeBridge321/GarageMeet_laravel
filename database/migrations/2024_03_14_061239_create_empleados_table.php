@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreign('tipos_cargos_id')->references('id')->on('tipos_cargos');
             $table->foreign('talleres_mecanicos_id')->references('id')->on('talleres_mecanicos');
             $table->timestamps();
-        }); 
+        });
     }
 
     /**

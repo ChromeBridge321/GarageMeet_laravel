@@ -157,6 +157,12 @@
                         </div>
                     @endif
 
+                    @if (session('deletefalse'))
+                        <div class="alert bg-danger text-white " role="alert">
+                            Cliente no ha sido eliminado correctamente
+                        </div>
+                    @endif
+
                     <script>
                         var res = function() {
 
@@ -258,7 +264,7 @@
                                                         <label for=""
                                                             class="form-label text-bg-dark">ID</label>
                                                         <input type="text" class="w-100 form-check-input"
-                                                            name="ID" value="{{ $item->id }}">
+                                                            name="ID" value="{{ $item->id }}" readonly>
                                                     </div>
 
                                                     <div class="col-12 d-flex flex-column w-100">
