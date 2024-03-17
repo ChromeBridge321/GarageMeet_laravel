@@ -39,3 +39,7 @@ Route::get('/historial', [App\Http\Controllers\HistorialController::class, 'inde
 route::post('/agregar_cliente', [App\Http\Controllers\ClientesController::class, 'store'])->name('clientes.create');
 route::post('/actualizar_cliente', [App\Http\Controllers\ClientesController::class, 'update'])->name('clientes.update');
 route::get('/eliminar_cliente-{id}', [App\Http\Controllers\ClientesController::class, 'delete'])->name('clientes.delete');
+
+route::post('/agregar_empleado', [App\Http\Controllers\EmpleadosController::class, 'store'])->name('empleados.create');
+route::post('/actualizar_empleado', [App\Http\Controllers\EmpleadosController::class, 'update'])->name('empleados.update');
+route::get('/eliminar_empleado-{id}', [App\Http\Controllers\EmpleadosController::class, 'delete'])->name('empleados.delete');
