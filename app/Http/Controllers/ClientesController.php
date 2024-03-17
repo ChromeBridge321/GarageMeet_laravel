@@ -40,7 +40,7 @@ class ClientesController extends Controller
             ->limit('1')
             ->get();
 
-        return view('index-clientes')->with("personas", $personas)->with("primer_id", $primer_id);
+        return view('clientes')->with("personas", $personas)->with("primer_id", $primer_id);
     }
 
 

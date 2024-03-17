@@ -153,13 +153,13 @@
 
                     @if (session('deletetrue'))
                         <div class="alert bg-success text-white " role="alert">
-                            Cliente ha sido eliminado correctamente
+                            Empleado ha sido eliminado correctamente
                         </div>
                     @endif
 
                     @if (session('deletefalse'))
                         <div class="alert bg-danger text-white " role="alert">
-                            Cliente no ha sido eliminado correctamente
+                            Empleado no ha sido eliminado correctamente
                         </div>
                     @endif
 
