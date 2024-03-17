@@ -113,12 +113,14 @@ class ClientesController extends Controller
     public function delete($id)
     {
         try {
-            $sql = DB::delete("delete from personas where id = $id");
+            $sql2 = DB::table('clientes')->where('id', '=', $id)->delete();
+            $sql = DB::table('personas')->where('id', '=', $id)->delete();
         } catch (\Throwable $th) {
             $sql = 0;
+            $sql2 = 0;
         };
 
-        if ($sql == true) {
+        if ($sql == true and $sql2 == true) {
             return back()->with('deletetrue', 'persona ha sido eliminada correctamente');
         } else {
             return back()->with('deletefalse', 'persona no ha sido eliminada');
