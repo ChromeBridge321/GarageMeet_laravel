@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\clientes;
+use App\Models\user;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
 
@@ -26,10 +27,14 @@ class ClientesController extends Controller
      */
     public function index()
     {
+        $correo = (auth()->user()->email);
 
-        $personas = DB::table('personas')
-            ->join('clientes', 'personas.id', '=', 'clientes.personas_id')
-            ->select('personas.*', 'personas.nombre', 'personas.telefono', 'personas.correo', 'personas.direccion')
+        $personas = DB::table('users')
+            ->join('talleres_mecanicos', 'talleres_mecanicos.users_id', '=', 'users.id')
+            ->join('clientes', 'clientes.talleres_mecanicos_id', '=', 'talleres_mecanicos.id')
+            ->join('personas', 'personas.id', '=', 'clientes.personas_id')
+            ->select('personas.id', 'personas.nombre', 'personas.telefono', 'personas.correo', 'personas.direccion')
+            ->where('users.email', '=', $correo)
             ->get();
 
 
@@ -40,7 +45,7 @@ class ClientesController extends Controller
             ->limit('1')
             ->get();
 
-        return view('clientes')->with("personas", $personas)->with("primer_id", $primer_id);
+        return view('clientes')->with("personas", $personas)->with("primer_id", $primer_id)->with("correo", $correo);
     }
 
 

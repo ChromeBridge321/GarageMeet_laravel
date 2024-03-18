@@ -123,8 +123,95 @@
 
     </div>
 
+    <div class=" container-fluid p-5">
+        <div class="row col-12 d-flex justify-content-center">
+            <div class="row d-flex justify-content-end">
+                <div class="pt-3 mt-3">
+                    @if (session('correcto'))
+                        <div class="alert bg-success text-white " role="alert">
+                            Datos guardados correctamente
+                        </div>
+                    @endif
+
+                    @if (session('incorrecto'))
+                        <div class="alert bg-danger text-white " role="alert">
+                            Los datos no se han podido guardar
+                        </div>
+                    @endif
+
+                    @if (session('editrue'))
+                        <div class="alert bg-success text-white " role="alert">
+                            Datos actualizados correctamente
+                        </div>
+                    @endif
+
+                    @if (session('editfalse'))
+                        <div class="alert bg-danger text-white " role="alert">
+                            Datos no actualizados correctamente
+                        </div>
+                    @endif
+
+                    @if (session('deletetrue'))
+                        <div class="alert bg-success text-white " role="alert">
+                            Empleado ha sido eliminado correctamente
+                        </div>
+                    @endif
+
+                    @if (session('deletefalse'))
+                        <div class="alert bg-danger text-white " role="alert">
+                            Empleado no ha sido eliminado correctamente
+                        </div>
+                    @endif
+
+                    <script>
+                        var res = function() {
+
+                            var not = confirm("estas seguro que quieres eliminar el registro?");
+                            return not;
+
+                        }
+                    </script>
+
+                </div>
+            </div>
+            <div class="col-12 mt-2 table-responsive">
+                <table class="table table-dark table-responsive ">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Usuario</th>
+                            <th scope="col">Fecha de la cita</th>
+                            <th class=" text-center" scope="col">Estado de la cita</th>
+                            <th scope="col">Accion</th>
+
+                        </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        @foreach ($citas as $item)
+                            <tr>
+                                <th scope="row">{{ $item->id }}</th>
+                                <td>{{ $item->name }}</td>
+                                <td>{{ $item->fecha_cita }}</td>
+                                @if ($item->estado == 1)
+                                    <td class=" bg-success text-center">Activo</td>
+                                @else
+                                    <td class=" bg-danger text-center">Inactivo</td>
+                                @endif
+                                <th><button data-bs-toggle="modal" data-bs-target="#ModalEditar{{ $item->id }}"
+                                        type="button" class="btn btn-primary">Editar</button>
+                                </th>
+                            </tr>
+                        @endforeach
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
 
     <script src="{{ asset('CSS/Bootstrap/js/script.js') }}"></script>
+    <script src="{{ asset('CSS/Bootstrap/js/bootstrap.min.js') }}"></script>
 </body>
 
 </html>

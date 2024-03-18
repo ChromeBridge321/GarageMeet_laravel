@@ -18,7 +18,9 @@ return new class extends Migration
             $table->string('correo', 120);
             $table->text('direccion', 60);
             $table->unsignedBigInteger('municipios_id');
+            $table->unsignedBigInteger('users_id');
             $table->foreign('municipios_id')->references('id')->on('municipios');
+            $table->foreign('users_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

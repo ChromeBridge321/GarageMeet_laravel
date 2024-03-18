@@ -123,8 +123,6 @@
 
     </div>
 
-
-
     <script src="{{ asset('CSS/Bootstrap/js/script.js') }}"></script>
 </body>
 

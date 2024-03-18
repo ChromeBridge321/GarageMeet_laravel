@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class CitasController extends Controller
@@ -23,6 +24,11 @@ class CitasController extends Controller
      */
     public function index()
     {
-        return view('citas');
+        $citas = DB::table('users')
+            ->join('citas', 'citas.usuarios_id', '=', 'users.id')
+            ->select('citas.id', 'users.name', 'citas.fecha_cita', 'citas.estado')
+            ->get();
+
+        return view('citas')->with('citas', $citas);
     }
 }

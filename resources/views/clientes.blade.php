@@ -177,7 +177,7 @@
                         data-bs-target="#ModalAnadir" type="button" class=" btn btn-primary">Añadir</button></div>
             </div>
             <!-- Modal para anadir -->
-            <div class="modal fade" id="ModalAnadir" tabindex="-1" aria-labelledby="exampleModalLabel"
+            <div class="modal fade h-100" id="ModalAnadir" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -221,6 +221,7 @@
             </div>
             <div class="col-12 mt-2 table-responsive">
                 <table class="table table-hover table-dark ">
+
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
@@ -246,7 +247,7 @@
                                         href="{{ route('clientes.delete', $item->id) }}">Eliminar</a>
                                 </th>
                                 <!-- Modal para editar -->
-                                <div class="modal fade" id="ModalEditar{{ $item->id }}" tabindex="-1"
+                                <div class="modal fade h-100" id="ModalEditar{{ $item->id }}" tabindex="-1"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
