@@ -26,11 +26,23 @@ class EmpleadosController extends Controller
      */
     public function index()
     {
-        $tipos_cargos = DB::table('tipos_cargos')->select('id', 'nombre')->get();
-        $personas = DB::table('personas')
+        $correo = (auth()->user()->email);
+
+        $tipos_cargos = DB::table('users')
+            ->join('talleres_mecanicos', 'talleres_mecanicos.users_id', '=', 'users.id')
+            ->join('tipos_cargos', 'tipos_cargos.taller_id', '=', 'talleres_mecanicos.id')
+            ->select('tipos_cargos.id', 'tipos_cargos.nombre')
+            ->where('users.email', '=', $correo)
+            ->get();
+
+
+        $personas = DB::table('users')
+            ->join('talleres_mecanicos', 'talleres_mecanicos.users_id', '=', 'users.id')
+            ->join('personas', 'personas.taller_id', '=', 'talleres_mecanicos.id')
             ->join('empleados', 'empleados.personas_id', '=', 'personas.id')
             ->join('tipos_cargos', 'tipos_cargos.id', '=', 'empleados.tipos_cargos_id')
             ->select('personas.id', 'personas.nombre', 'personas.telefono', 'personas.correo', 'personas.direccion', 'tipos_cargos.nombre as tipo_cargo')
+            ->where('users.email', '=', $correo)
             ->get();
 
         return view('empleados')->with('tipos_cargos', $tipos_cargos)->with("personas", $personas);

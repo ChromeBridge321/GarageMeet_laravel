@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('tipos_cargos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre',60);
+            $table->string('nombre', 60);
+            $table->unsignedBigInteger('taller_id');
+            $table->foreign('taller_id')->references('id')->on('talleres_mecanicos');
             $table->timestamps();
         });
     }

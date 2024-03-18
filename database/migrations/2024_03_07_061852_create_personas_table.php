@@ -14,9 +14,11 @@ return new class extends Migration
         Schema::create('personas', function (Blueprint $table) {
             $table->id();
             $table->string('nombre', 120);
-            $table->string('correo', 120)->unique();
-            $table->string('telefono', 10)->unique();
+            $table->string('correo', 120);
+            $table->string('telefono', 10);
             $table->text('direccion');
+            $table->unsignedBigInteger('taller_id');
+            $table->foreign('taller_id')->references('id')->on('talleres_mecanicos');
             $table->timestamps();
         });
     }

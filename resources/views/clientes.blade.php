@@ -224,7 +224,7 @@
 
                     <thead>
                         <tr>
-                            <th scope="col">ID</th>
+                            <th scope="col">No.</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Correo</th>
                             <th scope="col">Telefono</th>
@@ -233,10 +233,14 @@
 
                         </tr>
                     </thead>
+
                     <tbody class="table-group-divider">
+                        <?php
+                        $i = 1;
+                        ?>
                         @foreach ($personas as $item)
                             <tr>
-                                <th scope="row">{{ $item->id }}</th>
+                                <th scope="row">{{ $i }}</th>
                                 <td>{{ $item->nombre }}</td>
                                 <td>{{ $item->correo }}</td>
                                 <td>{{ $item->telefono }}</td>
@@ -306,6 +310,9 @@
                                     </div>
                                 </div>
                             </tr>
+                            <?php
+                            $i++;
+                            ?>
                         @endforeach
 
                     </tbody>
