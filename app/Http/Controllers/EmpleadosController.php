@@ -50,30 +50,55 @@ class EmpleadosController extends Controller
 
     public function store(Request $request)
     {
+        $correo = (auth()->user()->email);
+
+        $find = DB::table('users')
+        ->join('talleres_mecanicos', 'talleres_mecanicos.users_id', '=', 'users.id')
+        ->select('talleres_mecanicos.id')
+        ->where('users.email', '=', $correo)
+        ->get();
+
+
+    foreach ($find as $key => $value) {
+        $taller = $value->id;
+    };
+
+
         try {
-            $sql = DB::insert("insert into personas (nombre,telefono,correo,direccion,id) values (?,?,?,?,?) ", [
+            $sql = DB::insert("insert into personas (nombre,telefono,correo,direccion,id,taller_id) values (?,?,?,?,?,?) ", [
                 $request->Nombre,
                 $request->Telefono,
                 $request->Correo,
                 $request->Direccion,
                 $request->ID,
+                $taller,
 
             ]);
 
-            $primer_id = DB::table('personas')
-                ->select('id', 'nombre', 'telefono', 'correo', 'direccion')
-                ->orderByDesc('id')
-                ->limit('1')
-                ->get();
+            $find_2 = DB::table('users')
+            ->join('talleres_mecanicos', 'talleres_mecanicos.users_id', '=', 'users.id')
+            ->join('personas', 'personas.taller_id', '=', 'talleres_mecanicos.id')
+            ->select('personas.id')
+            ->where('users.email', '=', $correo)
+            ->orderByDesc('id')
+            ->limit('1')
+            ->get();
 
-            foreach ($primer_id as $key => $item) {
+        foreach ($find_2 as $key => $value) {
+            $primer_id = $value->id;
+        };
+
+
+
+
+
                 $sql2 = DB::insert("insert into empleados (id,personas_id,talleres_mecanicos_id,tipos_cargos_id) values (?,?,?,?) ", [
-                    $item->id,
-                    $item->id,
-                    1,
+                    $primer_id,
+                    $primer_id,
+                    $taller,
                     $request->Puesto,
                 ]);
-            }
+            
         } catch (\Throwable $th) {
             $sql = 0;
             $sql2 = 0;
