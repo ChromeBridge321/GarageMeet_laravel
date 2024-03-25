@@ -24,9 +24,23 @@ class CitasController extends Controller
      */
     public function index()
     {
+        $correo = (auth()->user()->email);
+
+        $subquery = DB::table('users')
+        ->join('talleres_mecanicos as t','t.users_id','=','users.id')
+        ->select('t.id')
+        ->where('users.email', '=', $correo)
+        ->get();
+
+        foreach ($subquery as $key => $value) {
+           $taller = $value -> id;
+        }
+
         $citas = DB::table('users')
-            ->join('citas', 'citas.usuarios_id', '=', 'users.id')
-            ->select('citas.id', 'users.name', 'citas.fecha_cita', 'citas.estado')
+            ->join('talleres_mecanicos as t', 't.users_id', '=', 'users.id')
+            ->join('citas as c', 'c.talleres_mecanicos_id', '=', 't.id')
+            ->select('c.id', 'users.name', 'c.fecha_cita', 'c.estado')
+            ->where('t.id',$taller)
             ->get();
 
         return view('citas')->with('citas', $citas);
