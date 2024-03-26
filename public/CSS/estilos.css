@@ -93,7 +93,7 @@ header {
 }
 
 .options__menu .option {
-    padding: 20px 0px;
+    padding: 10px 0px;
     display: flex;
     align-items: center;
     position: relative;
@@ -106,8 +106,9 @@ header {
 }
 
 .options__menu .option h4 {
-    font-weight: 300;
+margin: 0;
     cursor: pointer;
+    font-size: 20px;
 }
 
 a.selected {
