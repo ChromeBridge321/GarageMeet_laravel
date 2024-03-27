@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 
 <body id="body">
@@ -42,64 +43,39 @@
             <h4 class="m-0">GarageMet</h4>
         </div>
 
-        <div class="options__menu">
+        <div class="options__menu h-100">
 
-            <a href="{{ route('home') }}">
+            <a href="{{ route('home') }}" >
                 <div class="option">
-                    <i class="" title="Reportes"><svg xmlns="http://www.w3.org/2000/svg" width="30"
-                            height="30" fill="#ffffff" viewBox="0 0 256 256">
-                            <path
-                                d="M232,208a8,8,0,0,1-8,8H32a8,8,0,0,1,0-16h8V136a8,8,0,0,1,8-8H72a8,8,0,0,1,8,8v64H96V88a8,8,0,0,1,8-8h32a8,8,0,0,1,8,8V200h16V40a8,8,0,0,1,8-8h40a8,8,0,0,1,8,8V200h8A8,8,0,0,1,232,208Z">
-                            </path>
-                        </svg></i>
-                    <h4>Inicio</h4>
+                    <i><img src="{{ asset('images/reportes_off.svg') }}" alt=""></i>
+                    <h4>Reportes</h4>
                 </div>
             </a>
 
-            <a href="{{ route('citas') }}">
+            <a href="{{ route('citas') }} " >
                 <div class="option">
-                    <i title="Citas"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-                            fill="#ffffff" viewBox="0 0 256 256">
-                            <path
-                                d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM169.66,133.66l-48,48a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L116,164.69l42.34-42.35a8,8,0,0,1,11.32,11.32ZM48,80V48H72v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80Z">
-                            </path>
-                        </svg></i>
+                    <i><img src="{{ asset('images/cita_off.svg') }}" alt=""></i>
                     <h4>Citas</h4>
                 </div>
             </a>
 
-            <a href="{{ route('empleados') }}">
+            <a href="{{ route('empleados') }}" >
                 <div class="option">
-                    <i title="Empleados"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-                            fill="#ffffff" viewBox="0 0 256 256">
-                            <path
-                                d="M64.12,147.8a4,4,0,0,1-4,4.2H16a8,8,0,0,1-7.8-6.17,8.35,8.35,0,0,1,1.62-6.93A67.79,67.79,0,0,1,37,117.51a40,40,0,1,1,66.46-35.8,3.94,3.94,0,0,1-2.27,4.18A64.08,64.08,0,0,0,64,144C64,145.28,64,146.54,64.12,147.8Zm182-8.91A67.76,67.76,0,0,0,219,117.51a40,40,0,1,0-66.46-35.8,3.94,3.94,0,0,0,2.27,4.18A64.08,64.08,0,0,1,192,144c0,1.28,0,2.54-.12,3.8a4,4,0,0,0,4,4.2H240a8,8,0,0,0,7.8-6.17A8.33,8.33,0,0,0,246.17,138.89Zm-89,43.18a48,48,0,1,0-58.37,0A72.13,72.13,0,0,0,65.07,212,8,8,0,0,0,72,224H184a8,8,0,0,0,6.93-12A72.15,72.15,0,0,0,157.19,182.07Z">
-                            </path>
-                        </svg></i>
+                    <i><img src="{{ asset('images/empleados_off.svg') }}" alt=""></i>
                     <h4>Empleados</h4>
                 </div>
             </a>
 
             <a href="{{ route('clientes') }}" class="selected">
                 <div class="option">
-                    <i title="Clientes"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-                            fill="#ffffff" viewBox="0 0 256 256">
-                            <path
-                                d="M230.4,219.19A8,8,0,0,1,224,232H32a8,8,0,0,1-6.4-12.8A67.88,67.88,0,0,1,53,197.51a40,40,0,1,1,53.93,0,67.42,67.42,0,0,1,21,14.29,67.42,67.42,0,0,1,21-14.29,40,40,0,1,1,53.93,0A67.85,67.85,0,0,1,230.4,219.19ZM27.2,126.4a8,8,0,0,0,11.2-1.6,52,52,0,0,1,83.2,0,8,8,0,0,0,12.8,0,52,52,0,0,1,83.2,0,8,8,0,0,0,12.8-9.61A67.85,67.85,0,0,0,203,93.51a40,40,0,1,0-53.93,0,67.42,67.42,0,0,0-21,14.29,67.42,67.42,0,0,0-21-14.29,40,40,0,1,0-53.93,0A67.88,67.88,0,0,0,25.6,115.2,8,8,0,0,0,27.2,126.4Z">
-                            </path>
-                        </svg></i>
+                    <i><img src="{{ asset('images/clientes_on.svg') }}" alt=""></i>
                     <h4>Clientes</h4>
                 </div>
             </a>
 
             <a href="{{ route('historial') }}">
                 <div class="option">
-                    <i title="Historial"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-                            fill="#ffffff" viewBox="0 0 256 256">
-                            <path
-                                d="M224,128A96,96,0,0,1,62.11,197.82a8,8,0,1,1,11-11.64A80,80,0,1,0,71.43,71.43C67.9,75,64.58,78.51,61.35,82L77.66,98.34A8,8,0,0,1,72,112H32a8,8,0,0,1-8-8V64a8,8,0,0,1,13.66-5.66L50,70.7c3.22-3.49,6.54-7,10.06-10.55A96,96,0,0,1,224,128ZM128,72a8,8,0,0,0-8,8v48a8,8,0,0,0,3.88,6.86l40,24a8,8,0,1,0,8.24-13.72L136,123.47V80A8,8,0,0,0,128,72Z">
-                            </path>
-                        </svg></i>
+                    <i><img src="{{ asset('images/historial.svg') }}" alt=""></i>
                     <h4>Historial</h4>
                 </div>
             </a>
@@ -119,13 +95,22 @@
                 home
             </a>
 
-        </div>
+            <div class=" perfil h-100 d-flex justify-content-center align-items-end ">
+            <div class="col-3 me-1">
+                <img src="{{asset('images/yasuo.jpg')}}" alt="" class=" avatar rounded-circle">
+            </div>
 
-    </div>
+<div class="col">
+    <a href="" class=" d-flex justify-content-center align-items-center text-decoration-none">
+        <h6 class=" m-0 text-center">Cerra sesion</h6>
+        <img src="{{asset('images/salir.svg')}}" alt="">
+    </a>
+</div>
+</div>
+</div>
+</div>
 
-    <div class=" container-fluid p-5">
-        <div class="row col-12 d-flex justify-content-center">
-            <div class="row d-flex justify-content-end">
+    <div class=" container-fluid pe-2 pl-2 pt-5">
                 <div class="pt-3 mt-3">
                     @if (session('correcto'))
                         <div class="alert bg-success text-white " role="alert">
@@ -173,42 +158,58 @@
                     </script>
 
                 </div>
-                <div class="col-2 d-flex justify-content-end pt-1"><button data-bs-toggle="modal"
-                        data-bs-target="#ModalAnadir" type="button" class=" btn btn-primary">Añadir</button></div>
-            </div>
+                <div class="col-12 d-flex justify-content-end pt-3 pe-3 alert alert-light align-items-center pb-3">
+                    <form class="d-flex justify-content-start col-6">
+<div action="" class="search w-75 me-3">
+<img src="{{asset('Images/buscar.svg') }}">
+    <input type="text" placeholder="Buscar cliente" id="search">
+</div>
+<button type="submit" class="btn btn-secondary ">
+    Buscar
+</button>
+                    </form>
+
+                    <div class="d-flex justify-content-end col-6">
+                        <button data-bs-toggle="modal"
+                        data-bs-target="#ModalAnadir" type="button" class=" btn btn-primary">
+                        Añadir cliente
+                    </button>
+                    </div>
+
+                </div>
             <!-- Modal para anadir -->
             <div class="modal fade h-100" id="ModalAnadir" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <div class="modal-header bg-dark">
-                            <h1 class="modal-title fs-5 text-white" id="exampleModalLabel">Añadir Nuevo Cliente</h1>
+                        <div class="modal-header text-dark ">
+                            <h1 class="modal-title fs-5 text-black" id="exampleModalLabel">Añadir Nuevo Cliente</h1>
                             <button type="button" class=" bg-white btn-close" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                         </div>
-                        <div class="modal-body bg-dark">
+                        <div class="modal-body">
                             <form action="{{ route('clientes.create') }}" method="post">
                                 @csrf
                                 <div class="col-12 d-flex flex-column w-100">
-                                    <label for="" class="form-label text-bg-dark">Nombre</label>
+                                    <label for="" class="form-label text-dark">Nombre</label>
                                     <input type="text" class="w-100 form-check-input" name="Nombre">
                                 </div>
 
                                 <div class="col-12 d-flex flex-column">
-                                    <label for="" class="form-label">Correo</label>
+                                    <label for="" class="form-label text-dark">Correo</label>
                                     <input type="email" class="w-100 w-100 form-check-input" name="Correo">
                                 </div>
 
                                 <div class="col-12 d-flex flex-column">
-                                    <label for="" class=" form-label">Telefono</label>
+                                    <label for="" class=" form-label text-dark">Telefono</label>
                                     <input type="number" class="w-100 form-check-input" name="Telefono">
                                 </div>
 
                                 <div class="col-12 d-flex flex-column">
-                                    <label for="" class=" form-label">Direccion</label>
+                                    <label for="" class=" form-label text-dark">Direccion</label>
                                     <input type="text" class="w-100 form-check-input" name="Direccion">
                                 </div>
-                                <div class="modal-footer bg-dark">
+                                <div class="modal-footer ">
                                     <button type="button" class="btn btn-secondary"
                                         data-bs-dismiss="modal">Cerrar</button>
                                     <button type="submit" class="btn btn-primary">Añadir</button>
@@ -220,7 +221,7 @@
                 </div>
             </div>
             <div class="col-12 mt-2 table-responsive">
-                <table class="table table-hover table-dark ">
+                <table class="table table-hover table-light " >
 
                     <thead>
                         <tr>
@@ -234,14 +235,14 @@
                         </tr>
                     </thead>
 
-                    <tbody class="table-group-divider">
+                    <tbody class="table-group-divider" id="tabla">
                         <?php
                         $i = 1;
                         ?>
                         @foreach ($personas as $item)
                             <tr>
                                 <th scope="row">{{ $i }}</th>
-                                <td>{{ $item->nombre }}</td>
+                                <td class=" text-primary">{{ $item->nombre }}</td>
                                 <td>{{ $item->correo }}</td>
                                 <td>{{ $item->telefono }}</td>
                                 <td>{{ $item->direccion }}</td>
@@ -316,14 +317,29 @@
                         @endforeach
 
                     </tbody>
+
                 </table>
+                <div class=" d-flex justify-content-end altura">
+                    {!!$personas->links()!!}
+                </div>
             </div>
         </div>
-    </div>
 
+<script>
+    $(document).ready(function(){
+  $("#search").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#tabla tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
 
+</script>
     <script src="{{ asset('CSS/Bootstrap/js/script.js') }}"></script>
     <script src="{{ asset('CSS/Bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('CSS/Bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
 </body>
 
 </html>

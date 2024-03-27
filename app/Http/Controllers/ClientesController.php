@@ -7,6 +7,7 @@ use App\Models\clientes;
 use App\Models\user;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
+use Illuminate\Pagination\Paginator;
 
 class ClientesController extends Controller
 {
@@ -26,6 +27,7 @@ class ClientesController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
+
     {
         $correo = (auth()->user()->email);
 
@@ -35,7 +37,7 @@ class ClientesController extends Controller
             ->join('personas', 'personas.id', '=', 'clientes.personas_id')
             ->select('personas.id', 'personas.nombre', 'personas.telefono', 'personas.correo', 'personas.direccion')
             ->where('users.email', '=', $correo)
-            ->get();
+            ->paginate(10);
 
         return view('clientes')->with("personas", $personas)->with("correo", $correo);
     }
