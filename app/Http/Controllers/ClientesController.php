@@ -39,7 +39,7 @@ class ClientesController extends Controller
             ->where('users.email', '=', $correo)
             ->paginate(10);
 
-        return view('clientes')->with("personas", $personas)->with("correo", $correo);
+        return view('clientes')->with("personas", $personas);
     }
 
 
@@ -143,5 +143,22 @@ class ClientesController extends Controller
         } else {
             return back()->with('deletefalse', 'persona no ha sido eliminada');
         }
+    }
+
+
+    public function search(Request $request){
+
+        $correo = (auth()->user()->email);
+
+        $personas = DB::table('users')
+            ->join('talleres_mecanicos', 'talleres_mecanicos.users_id', '=', 'users.id')
+            ->join('clientes', 'clientes.talleres_mecanicos_id', '=', 'talleres_mecanicos.id')
+            ->join('personas', 'personas.id', '=', 'clientes.personas_id')
+            ->select('personas.id', 'personas.nombre', 'personas.telefono', 'personas.correo', 'personas.direccion')
+            ->where('users.email', '=', $correo)
+            ->where('personas.nombre', 'like', "%$request->nombre%")
+            ->paginate(10);
+
+        return view('clientes')->with("personas", $personas);
     }
 }
