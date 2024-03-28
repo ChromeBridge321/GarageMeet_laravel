@@ -4,14 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{asset('CSS/Bootstrap/css/bootstrap.css')}}">
-    <link rel="stylesheet" href="{{asset('CSS/index.css')}}">
+    <link rel="stylesheet" href="{{ asset('CSS/Bootstrap/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('CSS/index.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,100;1,500;1,700&display=swap"
         rel="stylesheet">
     <title>GarageMet</title>
 </head>
+
 <body>
     <div class="container-fluid">
         <div class="row" id="nav">
@@ -23,7 +24,7 @@
                 <div class="col-12 col-sm-12 col-lg-8 col-xl-6">
                     <div class="row underline-hover">
                         <di v class="col-12 col-sm col-md d-flex align-items-center justify-content-center links"><a
-                                class="underline-hover" href="{{route('talleres')}}">Talleres</a></di>
+                                class="underline-hover" href="{{ route('talleres') }}">Talleres</a></di>
 
 
                         <div class="col-12 col-sm col-md d-flex align-items-center justify-content-center links"><a
@@ -35,15 +36,15 @@
 
 
                         <div class="col-12 col-sm col-md d-flex align-items-center justify-content-center links">
-                        @if (Route::has('login'))
-                    @auth
-                        <a href="{{ url('/home') }}" >Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Log in</a>
+                            @if (Route::has('login'))
+                                @auth
+                                    <a href="{{ url('/home') }}">Home</a>
+                                @else
+                                    <a href="{{ route('login') }}">Log in</a>
 
-                        
-                    @endauth
-            @endif  
+
+                                @endauth
+                            @endif
                         </div>
 
 
@@ -251,4 +252,3 @@
 <script src="js/bootstrap.min.js"></script>
 
 </html>
-

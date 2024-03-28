@@ -44,14 +44,14 @@
 
         <div class="options__menu">
 
-            <a href="{{ route('home') }}" >
+            <a href="{{ route('home') }}">
                 <div class="option">
                     <i><img src="{{ asset('images/reportes_off.svg') }}" alt=""></i>
                     <h4>Reportes</h4>
                 </div>
             </a>
 
-            <a href="{{ route('citas') }} " >
+            <a href="{{ route('citas') }} ">
                 <div class="option">
                     <i><img src="{{ asset('images/cita_off.svg') }}" alt=""></i>
                     <h4>Citas</h4>

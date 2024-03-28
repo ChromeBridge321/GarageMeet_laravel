@@ -44,7 +44,7 @@
 
         <div class="options__menu">
 
-            <a href="{{ route('home') }}" >
+            <a href="{{ route('home') }}">
                 <div class="option">
                     <i><img src="{{ asset('images/reportes_off.svg') }}" alt=""></i>
                     <h4>Reportes</h4>
@@ -179,50 +179,52 @@
                             <!-- Button trigger modal -->
 
 
-<!-- Modal -->
-<div class="modal fade" id="ModalEditar{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header bg-dark">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body bg-dark">
-        <div class="col-12 d-flex flex-column w-100">
-            <label for=""
-                class="form-label text-bg-dark">ID</label>
-            <input type="text" class="w-100 form-check-input"
-                name="Nombre" readonly value="{{ $item->id }}">
-        </div>
+                            <!-- Modal -->
+                            <div class="modal fade" id="ModalEditar{{ $item->id }}" tabindex="-1"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-dark">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body bg-dark">
+                                            <div class="col-12 d-flex flex-column w-100">
+                                                <label for="" class="form-label text-bg-dark">ID</label>
+                                                <input type="text" class="w-100 form-check-input" name="Nombre"
+                                                    readonly value="{{ $item->id }}">
+                                            </div>
 
-        <div class="col-12 d-flex flex-column w-100">
-            <label for=""
-                class="form-label text-bg-dark">Nombre del Cliente</label>
-            <input type="text" class="w-100 form-check-input"
-                name="Nombre" readonly value="{{ $item->name }}">
-        </div>
+                                            <div class="col-12 d-flex flex-column w-100">
+                                                <label for="" class="form-label text-bg-dark">Nombre del
+                                                    Cliente</label>
+                                                <input type="text" class="w-100 form-check-input" name="Nombre"
+                                                    readonly value="{{ $item->name }}">
+                                            </div>
 
-        <div class="col-12 d-flex flex-column w-100">
-            <label for=""
-                class="form-label text-bg-dark">Fecha de la CIta</label>
-            <input type="text" class="w-100 form-check-input"
-                name="Nombre" readonly value="{{ $item->fecha_cita }}">
-        </div>
-        <div class="col-12 d-flex flex-column">
-            <label for="" class=" form-label">Estado</label>
-<select name="" id="">
-<option value="1">Activo</option>
-<option value="0">Inactivo</option>
-</select>
-        </div>
-      </div>
-      <div class="modal-footer bg-dark">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+                                            <div class="col-12 d-flex flex-column w-100">
+                                                <label for="" class="form-label text-bg-dark">Fecha de la
+                                                    CIta</label>
+                                                <input type="text" class="w-100 form-check-input" name="Nombre"
+                                                    readonly value="{{ $item->fecha_cita }}">
+                                            </div>
+                                            <div class="col-12 d-flex flex-column">
+                                                <label for="" class=" form-label">Estado</label>
+                                                <select name="" id="">
+                                                    <option value="1">Activo</option>
+                                                    <option value="0">Inactivo</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer bg-dark">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         @endforeach
 
                     </tbody>

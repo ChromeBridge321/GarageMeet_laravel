@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{asset('CSS/Bootstrap/css/bootstrap.css')}}">
-    <link rel="stylesheet" href="{{asset('CSS/estilos.css')}}">
+    <link rel="stylesheet" href="{{ asset('CSS/Bootstrap/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('CSS/estilos.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,100;1,500;1,700&display=swap"
@@ -44,28 +44,28 @@
 
         <div class="options__menu">
 
-            <a href="{{ route('home') }}" >
+            <a href="{{ route('home') }}">
                 <div class="option">
                     <i><img src="{{ asset('images/reportes_off.svg') }}" alt=""></i>
                     <h4>Reportes</h4>
                 </div>
             </a>
 
-            <a href="{{ route('citas') }} " >
+            <a href="{{ route('citas') }} ">
                 <div class="option">
                     <i><img src="{{ asset('images/cita_off.svg') }}" alt=""></i>
                     <h4>Citas</h4>
                 </div>
             </a>
 
-            <a href="{{ route('empleados') }}" >
+            <a href="{{ route('empleados') }}">
                 <div class="option">
                     <i><img src="{{ asset('images/empleados_off.svg') }}" alt=""></i>
                     <h4>Empleados</h4>
                 </div>
             </a>
 
-            <a href="{{ route('clientes') }}" >
+            <a href="{{ route('clientes') }}">
                 <div class="option">
                     <i><img src="{{ asset('images/clientes_off.svg') }}" alt=""></i>
                     <h4>Clientes</h4>
@@ -100,7 +100,7 @@
     </div>
 
 
-    <script src="{{asset('CSS/Bootstrap/js/script.js')}}"></script>
+    <script src="{{ asset('CSS/Bootstrap/js/script.js') }}"></script>
 </body>
 
 </html>
