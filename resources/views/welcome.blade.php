@@ -48,13 +48,12 @@
                         </div>
 
 
-                        <div class="col-12 col-sm col-md d-flex align-items-center justify-content-center links"><a
-                                class="" href="index.html"><svg xmlns="http://www.w3.org/2000/svg" width="52"
-                                    height="52" fill="#ffffff" viewBox="0 0 256 256">
-                                    <path
-                                        d="M172,120a44,44,0,1,1-44-44A44.05,44.05,0,0,1,172,120Zm60,8A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88.09,88.09,0,0,0-91.47-87.93C77.43,41.89,39.87,81.12,40,128.25a87.65,87.65,0,0,0,22.24,58.16A79.71,79.71,0,0,1,84,165.1a4,4,0,0,1,4.83.32,59.83,59.83,0,0,0,78.28,0,4,4,0,0,1,4.83-.32,79.71,79.71,0,0,1,21.79,21.31A87.62,87.62,0,0,0,216,128Z">
-                                    </path>
-                                </svg></a></div>
+                        <div class="col-12 col-sm col-md d-flex align-items-center justify-content-center links">
+                            <a href="{{ route('garegemet') }}">
+                                <img src="{{ asset('images/yasuo.jpg') }}" alt=""
+                                    class=" avatar rounded-circle">
+                            </a>
+                        </div>
 
 
                     </div>
@@ -106,14 +105,14 @@
                     y darle la mejor atencion a tus clientes, es facil de usar e intuitivo.</p>
             </div>
             <div class="col-12 col-lg-6 justify-content-center align-items-center d-flex">
-                <img src="imagenes/img2.jpg" alt="" class="img-fluid p-5 pt-0 pb-5">
+                <img src="{{asset("images/img2.jpg")}}" alt="" class="img-fluid p-5 pt-0 pb-5">
             </div>
         </div>
 
 
         <div class="productividad row">
             <div class="col-12 col-lg-6 justify-content-center align-items-center d-flex">
-                <img src="imagenes/productividad.jpg" alt="" class="img-fluid p-5 pt-0 pb-0">
+                <img src="{{asset("images/productividad.jpg")}}" alt="" class="img-fluid p-5 pt-0 pb-0">
             </div>
             <div class="col-12 col-lg-6 d-flex justify-content-center flex-column p-5 pt-0 pb-0">
                 <h2 class="pb-2 pt-5">AUMENTA TU PRODUCTIVIDAD Y LA DE TU EQUIPO</h2>
@@ -144,14 +143,14 @@
             </div>
 
             <div class="col-12 col-lg-6 justify-content-center align-items-center d-flex p-5 pt-0 pb-0">
-                <img src="imagenes/reportes.jpg" alt="" class="img-fluid p-5 pt-0 pb-0">
+                <img src="{{asset("images/reportes.jpg")}}" alt="" class="img-fluid p-5 pt-0 pb-0">
             </div>
         </div>
 
 
         <div class="escapar row">
             <div class="col-12 col-lg-6 justify-content-center align-items-center d-flex p-5 pt-0 pb-0">
-                <img src="imagenes/escapar.jpg" alt="" class="img-fluid img-fluid p-5 pt-0 pb-0">
+                <img src="{{asset("images/escapar.jpg")}}" alt="" class="img-fluid img-fluid p-5 pt-0 pb-0">
             </div>
 
             <div class="col-12 col-lg-6 d-flex justify-content-center flex-column p-5 pt-0 pb-0">
