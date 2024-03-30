@@ -79,37 +79,29 @@
                 </div>
             </a>
 
-            <a class="dropdown-item" href="{{ route('logout') }}"
-                onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                {{ __('Logout') }}
-            </a>
-
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                @csrf
-            </form>
-
-
-            <a href="{{ route('garegemet') }}">
-                home
-            </a>
-
             <div class=" perfil h-100 d-flex justify-content-center align-items-end ">
                 <div class="col-3 me-1">
-                    <img src="{{ asset('images/yasuo.jpg') }}" alt="" class=" avatar rounded-circle">
+                    <a href="{{ route('garegemet') }}">
+                        <img src="{{ asset('images/yasuo.jpg') }}" alt="" class=" avatar rounded-circle">
+                    </a>
                 </div>
 
                 <div class="col">
-                    <a href="" class=" d-flex justify-content-center align-items-center text-decoration-none">
-                        <h6 class=" m-0 text-center">Cerra sesion</h6>
-                        <img src="{{ asset('images/salir.svg') }}" alt="">
+                    <a class=" h6" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                        {{ __('Cerrar Sesion') }}
                     </a>
+                    <img src="{{ asset('images/salir.svg') }}" alt="">
                 </div>
             </div>
         </div>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+        </form>
     </div>
 
-    <div class=" container-fluid pe-2 pl-2 pt-5">
+    <div class=" container-fluid p-5">
         <div class="pt-3 mt-3">
             @if (session('correcto'))
                 <div class="alert bg-success text-white " role="alert">
@@ -157,19 +149,26 @@
             </script>
 
         </div>
-        <div class="col-12 d-flex justify-content-end pt-3 pe-3 alert alert-light align-items-center pb-3">
-            <form action="{{ route('buscar') }}" method="post" class="d-flex justify-content-start col-6">
+        <div class="col-12 d-flex justify-content-around pt-3 pe-3 alert alert-light align-items-center pb-3">
+            <form action="{{ route('buscar') }}" method="GET" class="d-flex justify-content-between col-8">
                 @csrf
                 <div action="" class="search w-75 me-3">
                     <img src="{{ asset('Images/buscar.svg') }}">
                     <input type="text" placeholder="Buscar cliente" id="search" name="nombre">
                 </div>
-                <button type="submit" class="btn btn-secondary ">
-                    Buscar
-                </button>
+                <div>
+                    <button type="submit" class="btn btn-secondary ">
+                        Buscar
+                    </button>
+                </div>
+                <div>
+                    <a type="submit" class="btn btn-warning " href="{{ route('clientes') }}">
+                        Mostrar todo
+                    </a>
+                </div>
             </form>
 
-            <div class="d-flex justify-content-end col-6">
+            <div class="d-flex justify-content-end col-4">
                 <button data-bs-toggle="modal" data-bs-target="#ModalAnadir" type="button"
                     class=" btn btn-primary">
                     Añadir cliente
@@ -183,7 +182,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header text-dark ">
-                        <h1 class="modal-title fs-5 text-black" id="exampleModalLabel">Añadir Nuevo Cliente</h1>
+                        <h1 class="modal-title fs-5 text-black" id="exampleModalLabel">Añadir nuevo cliente</h1>
                         <button type="button" class=" bg-white btn-close" data-bs-dismiss="modal"
                             aria-label="Close"></button>
                     </div>
@@ -191,22 +190,22 @@
                         <form action="{{ route('clientes.create') }}" method="post">
                             @csrf
                             <div class="col-12 d-flex flex-column w-100">
-                                <label for="" class="form-label text-dark">Nombre</label>
+                                <label for="" class="form-label ">Nombre</label>
                                 <input type="text" class="w-100 form-check-input" name="Nombre">
                             </div>
 
                             <div class="col-12 d-flex flex-column">
-                                <label for="" class="form-label text-dark">Correo</label>
+                                <label for="" class="form-label ">Correo</label>
                                 <input type="email" class="w-100 w-100 form-check-input" name="Correo">
                             </div>
 
                             <div class="col-12 d-flex flex-column">
-                                <label for="" class=" form-label text-dark">Telefono</label>
+                                <label for="" class=" form-label ">Telefono</label>
                                 <input type="number" class="w-100 form-check-input" name="Telefono">
                             </div>
 
                             <div class="col-12 d-flex flex-column">
-                                <label for="" class=" form-label text-dark">Direccion</label>
+                                <label for="" class=" form-label ">Direccion</label>
                                 <input type="text" class="w-100 form-check-input" name="Direccion">
                             </div>
                             <div class="modal-footer ">
@@ -221,16 +220,16 @@
             </div>
         </div>
         <div class="col-12 mt-2 table-responsive">
-            <table class="table table-hover table-light ">
+            <table class="table table-hover table-light table-responsive table-striped table-bordered">
 
                 <thead>
-                    <tr>
-                        <th scope="col">No.</th>
+                    <tr class=" table-primary">
+                        <th scope="col" class=" text-center">No.</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Correo</th>
                         <th scope="col">Telefono</th>
                         <th scope="col">Direccion</th>
-                        <th scope="col">Accion</th>
+                        <th scope="col" class=" text-center">Accion</th>
 
                     </tr>
                 </thead>
@@ -241,12 +240,12 @@
                     ?>
                     @foreach ($personas as $item)
                         <tr>
-                            <th scope="row">{{ $i }}</th>
-                            <td class=" text-primary">{{ $item->nombre }}</td>
+                            <th scope="row" class=" text-center">{{ $i }}</th>
+                            <td>{{ $item->nombre }}</td>
                             <td>{{ $item->correo }}</td>
                             <td>{{ $item->telefono }}</td>
                             <td>{{ $item->direccion }}</td>
-                            <th><button data-bs-toggle="modal" data-bs-target="#ModalEditar{{ $item->id }}"
+                            <th class=" d-flex justify-content-around"><button data-bs-toggle="modal" data-bs-target="#ModalEditar{{ $item->id }}"
                                     type="button" class="btn btn-primary">Editar</button>
                                 <a type="button" class="btn btn-danger" onclick="return res()"
                                     href="{{ route('clientes.delete', $item->id) }}">Eliminar</a>
@@ -256,8 +255,8 @@
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
-                                        <div class="modal-header bg-dark">
-                                            <h1 class="modal-title fs-5 text-white" id="exampleModalLabel">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5 text-black" id="exampleModalLabel">
                                                 Cliente:
                                                 {{ $item->nombre }}</h1>
                                             <button type="button" class=" bg-white btn-close"
@@ -265,16 +264,16 @@
                                         </div>
                                         <form action="{{ route('clientes.update') }}" method="POST">
                                             @csrf
-                                            <div class="modal-body bg-dark">
+                                            <div class="modal-body">
                                                 <div class="col-12 d-flex flex-column w-100">
-                                                    <label for="" class="form-label text-bg-dark">ID</label>
+                                                    <label for="" class="form-label ">ID</label>
                                                     <input type="text" class="w-100 form-check-input"
                                                         name="ID" value="{{ $item->id }}" readonly>
                                                 </div>
 
                                                 <div class="col-12 d-flex flex-column w-100">
                                                     <label for=""
-                                                        class="form-label text-bg-dark">Nombre</label>
+                                                        class="form-label ">Nombre</label>
                                                     <input type="text" class="w-100 form-check-input"
                                                         name="Nombre" value="{{ $item->nombre }}">
                                                 </div>
@@ -299,7 +298,7 @@
                                                         name="Direccion" value="{{ $item->direccion }}">
                                                 </div>
                                             </div>
-                                            <div class="modal-footer bg-dark">
+                                            <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Cerrar</button>
                                                 <button type="submit" class="btn btn-primary">Guardar</button>

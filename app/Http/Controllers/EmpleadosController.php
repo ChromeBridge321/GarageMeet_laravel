@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\empleados;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Pagination\Paginator;
 
 
 class EmpleadosController extends Controller
@@ -43,7 +44,7 @@ class EmpleadosController extends Controller
             ->join('tipos_cargos', 'tipos_cargos.id', '=', 'empleados.tipos_cargos_id')
             ->select('personas.id', 'personas.nombre', 'personas.telefono', 'personas.correo', 'personas.direccion', 'tipos_cargos.nombre as tipo_cargo')
             ->where('users.email', '=', $correo)
-            ->get();
+            ->paginate(10);
 
         return view('empleados')->with('tipos_cargos', $tipos_cargos)->with("personas", $personas);
     }
@@ -161,5 +162,30 @@ class EmpleadosController extends Controller
         } else {
             return back()->with('deletefalse', 'persona no ha sido eliminada');
         }
+    }
+
+    public function search(Request $request){
+
+        $correo = (auth()->user()->email);
+
+        $tipos_cargos = DB::table('users')
+        ->join('talleres_mecanicos', 'talleres_mecanicos.users_id', '=', 'users.id')
+        ->join('tipos_cargos', 'tipos_cargos.taller_id', '=', 'talleres_mecanicos.id')
+        ->select('tipos_cargos.id', 'tipos_cargos.nombre')
+        ->where('users.email', '=', $correo)
+        ->get();
+
+
+        $personas = DB::table('users')
+        ->join('talleres_mecanicos', 'talleres_mecanicos.users_id', '=', 'users.id')
+        ->join('personas', 'personas.taller_id', '=', 'talleres_mecanicos.id')
+        ->join('empleados', 'empleados.personas_id', '=', 'personas.id')
+        ->join('tipos_cargos', 'tipos_cargos.id', '=', 'empleados.tipos_cargos_id')
+        ->select('personas.id', 'personas.nombre', 'personas.telefono', 'personas.correo', 'personas.direccion', 'tipos_cargos.nombre as tipo_cargo')
+        ->where('users.email', '=', $correo)
+            ->where('personas.nombre', 'like', "%$request->nombre%")
+            ->paginate(10);
+
+            return view('empleados')->with('tipos_cargos', $tipos_cargos)->with("personas", $personas);
     }
 }

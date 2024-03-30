@@ -42,7 +42,7 @@
             <h4 class="m-0">GarageMet</h4>
         </div>
 
-        <div class="options__menu">
+        <div class="options__menu h-100">
 
             <a href="{{ route('home') }}">
                 <div class="option">
@@ -77,82 +77,31 @@
                     <i><img src="{{ asset('images/historial.svg') }}" alt=""></i>
                     <h4>Historial</h4>
                 </div>
-            </a>
-
-            <a class="dropdown-item" href="{{ route('logout') }}"
-                onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                {{ __('Logout') }}
-            </a>
-
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                @csrf
-            </form>
-
-
-            <a href="{{ route('garegemet') }}">
-                home
-            </a>
-
+                <div class=" perfil h-100 d-flex justify-content-center align-items-end ">
+                    <div class="col-3 me-1">
+                        <a href="{{ route('garegemet') }}">
+                            <img src="{{ asset('images/yasuo.jpg') }}" alt="" class=" avatar rounded-circle">
+                        </a>
+                    </div>
+    
+                    <div class="col">
+                        <a class=" h6" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+                            {{ __('Cerrar Sesion') }}
+                        </a>
+                        <img src="{{ asset('images/salir.svg') }}" alt="">
+                    </div>
+                </div>
         </div>
 
     </div>
 
     <div class=" container-fluid p-5">
-        <div class="row col-12 d-flex justify-content-center">
-            <div class="row d-flex justify-content-end">
-                <div class="pt-3 mt-3">
-                    @if (session('correcto'))
-                        <div class="alert bg-success text-white " role="alert">
-                            Datos guardados correctamente
-                        </div>
-                    @endif
-
-                    @if (session('incorrecto'))
-                        <div class="alert bg-danger text-white " role="alert">
-                            Los datos no se han podido guardar
-                        </div>
-                    @endif
-
-                    @if (session('editrue'))
-                        <div class="alert bg-success text-white " role="alert">
-                            Datos actualizados correctamente
-                        </div>
-                    @endif
-
-                    @if (session('editfalse'))
-                        <div class="alert bg-danger text-white " role="alert">
-                            Datos no actualizados correctamente
-                        </div>
-                    @endif
-
-                    @if (session('deletetrue'))
-                        <div class="alert bg-success text-white " role="alert">
-                            Empleado ha sido eliminado correctamente
-                        </div>
-                    @endif
-
-                    @if (session('deletefalse'))
-                        <div class="alert bg-danger text-white " role="alert">
-                            Empleado no ha sido eliminado correctamente
-                        </div>
-                    @endif
-
-                    <script>
-                        var res = function() {
-
-                            var not = confirm("estas seguro que quieres eliminar el registro?");
-                            return not;
-
-                        }
-                    </script>
-
-                </div>
-            </div>
             <div class="col-12 mt-2 table-responsive">
-                <table class="table table-dark table-responsive ">
+                <table class="table table-hover table-light table-responsive table-striped table-bordered">
                     <thead>
-                        <tr>
+                        <tr class=" table-primary">
                             <th scope="col">ID</th>
                             <th scope="col">Usuario</th>
                             <th scope="col">Fecha de la cita</th>
@@ -161,16 +110,16 @@
 
                         </tr>
                     </thead>
-                    <tbody class="table-group-divider">
+                    <tbody class="table-group-divider ">
                         @foreach ($citas as $item)
                             <tr>
                                 <th scope="row">{{ $item->id }}</th>
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->fecha_cita }}</td>
                                 @if ($item->estado == 1)
-                                    <td class=" bg-success text-center">Activo</td>
+                                    <td class="d-flex justify-content-center"><button class="btn btn-success w-50">Activo</button></td>
                                 @else
-                                    <td class=" bg-danger text-center">Inactivo</td>
+                                    <td class="d-flex justify-content-center"><button class="btn btn-danger w-50">Inactivo</button></td>
                                 @endif
                                 <th><button data-bs-toggle="modal" data-bs-target="#ModalEditar{{ $item->id }}"
                                         type="button" class="btn btn-primary">Editar</button>
@@ -230,7 +179,6 @@
                     </tbody>
                 </table>
             </div>
-        </div>
     </div>
 
 

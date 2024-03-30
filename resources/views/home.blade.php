@@ -42,7 +42,7 @@
             <h4 class="m-0">GarageMet</h4>
         </div>
 
-        <div class="options__menu">
+        <div class="options__menu h-100">
 
             <a href="{{ route('home') }}" class="selected">
                 <div class="option">
@@ -78,22 +78,22 @@
                     <h4>Historial</h4>
                 </div>
             </a>
+            <div class=" perfil h-100 d-flex justify-content-center align-items-end ">
+                <div class="col-3 me-1">
+                    <a href="{{ route('garegemet') }}">
+                        <img src="{{ asset('images/yasuo.jpg') }}" alt="" class=" avatar rounded-circle">
+                    </a>
+                </div>
 
-            <a class="dropdown-item" href="{{ route('logout') }}"
-                onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                {{ __('Logout') }}
-            </a>
-
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                @csrf
-            </form>
-
-
-            <a href="{{ route('garegemet') }}">
-                home
-            </a>
-
+                <div class="col">
+                    <a class=" h6" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                        {{ __('Cerrar Sesion') }}
+                    </a>
+                    <img src="{{ asset('images/salir.svg') }}" alt="">
+                </div>
+            </div>
         </div>
 
     </div>

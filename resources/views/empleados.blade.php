@@ -42,7 +42,7 @@
             <h4 class="m-0">GarageMet</h4>
         </div>
 
-        <div class="options__menu">
+        <div class="options__menu  h-100">
 
             <a href="{{ route('home') }}">
                 <div class="option">
@@ -79,28 +79,32 @@
                 </div>
             </a>
 
-            <a class="dropdown-item" href="{{ route('logout') }}"
-                onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                {{ __('Logout') }}
-            </a>
 
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                @csrf
-            </form>
+            <div class=" perfil h-100 d-flex justify-content-center align-items-end ">
+                <div class="col-3 me-1">
+                    <a href="{{ route('garegemet') }}">
+                        <img src="{{ asset('images/yasuo.jpg') }}" alt="" class=" avatar rounded-circle">
+                    </a>
+                </div>
 
-
-            <a href="{{ route('garegemet') }}">
-                home
-            </a>
-
+                <div class="col">
+                    <a class=" h6" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                        {{ __('Cerrar Sesion') }}
+                    </a>
+                    <img src="{{ asset('images/salir.svg') }}" alt="">
+                </div>
+            </div>
+        </div>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+        </form>
         </div>
 
     </div>
 
-    <div class=" container-fluid p-5">
-        <div class="row col-12 d-flex justify-content-center">
-            <div class="row d-flex justify-content-end">
+    <div class="container-fluid p-5">
                 <div class="pt-3 mt-3">
                     @if (session('correcto'))
                         <div class="alert bg-success text-white " role="alert">
@@ -148,25 +152,51 @@
                     </script>
 
                 </div>
-                <div class="col-2 d-flex justify-content-end pt-1"><button data-bs-toggle="modal"
-                        data-bs-target="#ModalAnadir" type="button" class=" btn btn-primary">Añadir</button></div>
-            </div>
+
+                <div class="col-12 d-flex justify-content-around pt-3 pe-3 alert alert-light align-items-center pb-3">
+                    <form action="{{ route('buscar_e') }}" method="GET" class="d-flex justify-content-between col-8">
+                        @csrf
+                        <div action="" class="search w-75 me-3">
+                            <img src="{{ asset('Images/buscar.svg') }}">
+                            <input type="text" placeholder="Buscar empleado" name="nombre">
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-secondary ">
+                                Buscar
+                            </button>
+                        </div>
+                        <div>
+                            <a type="submit" class="btn btn-warning " href="{{ route('empleados') }}">
+                                Mostrar todo
+                            </a>
+                        </div>
+                    </form>
+        
+                    <div class="d-flex justify-content-end col-4">
+                        <button data-bs-toggle="modal" data-bs-target="#ModalAnadir" type="button"
+                            class=" btn btn-primary">
+                            Añadir empleado
+                        </button>
+                    </div>
+        
+                </div>
+
             <!-- Modal para anadir -->
             <div class="modal fade h-100" id="ModalAnadir" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <div class="modal-header bg-dark">
-                            <h1 class="modal-title fs-5 text-white" id="exampleModalLabel">Añadir Nuevo Cliente</h1>
+                        <div class="modal-header ">
+                            <h1 class="modal-title fs-5 text-black" id="exampleModalLabel">Añadir nuevo empleado</h1>
                             <button type="button" class=" bg-white btn-close" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                         </div>
-                        <div class="modal-body bg-dark ">
+                        <div class="modal-body ">
                             <form action="{{ route('empleados.create') }}" method="post">
                                 @csrf
 
                                 <div class="col-12 d-flex flex-column w-100">
-                                    <label for="" class="form-label text-bg-dark">Nombre</label>
+                                    <label for="" class="form-label">Nombre</label>
                                     <input type="text" class="w-100 form-check-input" name="Nombre">
                                 </div>
 
@@ -176,7 +206,7 @@
                                 </div>
 
                                 <div class="col-12 d-flex flex-column">
-                                    <label for="" class=" form-label">Telefono</label>
+                                    <label for="" class=" form-label" >Telefono</label>
                                     <input type="number" class="w-100 form-check-input" name="Telefono">
                                 </div>
 
@@ -196,7 +226,7 @@
                                     </select>
                                 </div>
 
-                                <div class="modal-footer bg-dark">
+                                <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
                                         data-bs-dismiss="modal">Cerrar</button>
                                     <button type="submit" class="btn btn-primary">Añadir</button>
@@ -208,16 +238,16 @@
                 </div>
             </div>
             <div class="col-12 mt-2 table-responsive">
-                <table class="table table-hover table-dark table-responsive ">
+                <table class="table table-hover table-light table-responsive table-striped table-bordered">
                     <thead>
-                        <tr>
-                            <th scope="col">No.</th>
+                        <tr class=" table-primary">
+                            <th scope="col" class=" text-center">No.</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Correo</th>
                             <th scope="col">Telefono</th>
                             <th scope="col">Direccion</th>
                             <th scope="col">Puesto</th>
-                            <th scope="col">Accion</th>
+                            <th scope="col" class=" text-center">Accion</th>
 
                         </tr>
                     </thead>
@@ -225,13 +255,13 @@
                         <?php $i = 1; ?>
                         @foreach ($personas as $item)
                             <tr>
-                                <th scope="row">{{ $i }}</th>
+                                <th scope="row" class=" text-center">{{ $i }}</th>
                                 <td>{{ $item->nombre }}</td>
                                 <td>{{ $item->correo }}</td>
                                 <td>{{ $item->telefono }}</td>
                                 <td>{{ $item->direccion }}</td>
                                 <td>{{ $item->tipo_cargo }}</td>
-                                <th><button data-bs-toggle="modal" data-bs-target="#ModalEditar{{ $item->id }}"
+                                <th class=" d-flex justify-content-around"><button data-bs-toggle="modal" data-bs-target="#ModalEditar{{ $item->id }}"
                                         type="button" class="btn btn-primary">Editar</button>
                                     <a type="button" class="btn btn-danger" onclick="return res()"
                                         href="{{ route('empleados.delete', $item->id) }}">Eliminar</a>
@@ -241,60 +271,60 @@
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
-                                            <div class="modal-header bg-dark">
-                                                <h1 class="modal-title fs-5 text-white" id="exampleModalLabel">
-                                                    Cliente:
+                                            <div class="modal-header ">
+                                                <h1 class="modal-title fs-5  " id="exampleModalLabel">
+                                                    Empleado:
                                                     {{ $item->nombre }}</h1>
                                                 <button type="button" class=" bg-white btn-close"
                                                     data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <form action="{{ route('empleados.update') }}" method="POST">
                                                 @csrf
-                                                <div class="modal-body bg-dark">
+                                                <div class="modal-body ">
                                                     <div class="col-12 d-flex flex-column w-100">
                                                         <label for=""
-                                                            class="form-label text-bg-dark">ID</label>
-                                                        <input type="text" class="w-100 form-check-input"
+                                                            class="form-label ">ID</label>
+                                                        <input type="text" class="w-100 form-check-input text-black-50"
                                                             name="ID" value="{{ $item->id }}" readonly>
                                                     </div>
 
                                                     <div class="col-12 d-flex flex-column w-100">
                                                         <label for=""
-                                                            class="form-label text-bg-dark">Nombre</label>
-                                                        <input type="text" class="w-100 form-check-input"
+                                                            class="form-label ">Nombre</label>
+                                                        <input type="text" class="w-100 form-check-input text-black-50"
                                                             name="Nombre" value="{{ $item->nombre }}">
                                                     </div>
 
                                                     <div class="col-12 d-flex flex-column">
-                                                        <label for="" class="form-label">Correo</label>
-                                                        <input type="email" class="w-100 w-100 form-check-input"
+                                                        <label for="" class="form-label ">Correo</label>
+                                                        <input type="email" class="w-100 w-100 form-check-input text-black-50"
                                                             name="Correo" value="{{ $item->correo }}">
                                                     </div>
 
 
 
                                                     <div class="col-12 d-flex flex-column">
-                                                        <label for="" class=" form-label">Telefono</label>
-                                                        <input type="number" class="w-100 form-check-input"
+                                                        <label for="" class=" form-label ">Telefono</label>
+                                                        <input type="number" class="w-100 form-check-input text-black-50"
                                                             name="Telefono" value="{{ $item->telefono }}">
                                                     </div>
 
                                                     <div class="col-12 d-flex flex-column">
-                                                        <label for="" class=" form-label">Direccion</label>
-                                                        <input type="text" class="w-100 form-check-input"
+                                                        <label for="" class=" form-label ">Direccion</label>
+                                                        <input type="text" class="w-100 form-check-input text-black-50"
                                                             name="Direccion" value="{{ $item->direccion }}">
                                                     </div>
 
                                                     <div class="col-12 d-flex flex-column">
-                                                        <label for="" class=" form-label">Puesto
+                                                        <label for="" class=" form-label ">Puesto
                                                             actual</label>
-                                                        <input type="text" class="w-100 form-check-input"
+                                                        <input type="text" class="w-100 form-check-input text-black-50"
                                                             name="" value="{{ $item->tipo_cargo }}">
                                                     </div>
 
                                                     <div class="col-12 d-flex flex-column">
-                                                        <label for="" class=" form-label">Nuevo Puesto</label>
-                                                        <select name="Puesto" id="">
+                                                        <label for="" class=" form-label ">Nuevo puesto</label>
+                                                        <select name="Puesto" id="" class="text-black-50">
                                                             <option value=""></option>
                                                             @foreach ($tipos_cargos as $item)
                                                                 <option class=" text-black"
@@ -305,7 +335,7 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <div class="modal-footer bg-dark">
+                                                <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
                                                         data-bs-dismiss="modal">Cerrar</button>
                                                     <button type="submit" class="btn btn-primary">Guardar</button>
@@ -322,8 +352,10 @@
 
                     </tbody>
                 </table>
+                <div class=" d-flex justify-content-end altura">
+                    {!! $personas->links() !!}
+                </div>
             </div>
-        </div>
     </div>
 
 
