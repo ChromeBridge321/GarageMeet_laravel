@@ -22,20 +22,19 @@
                     <h1 class=" font-weight-bold">GarageMet</h1>
                 </div>
 
-                    <div class=" col-12 col-sm-2 col-md-2 col-lg-1 d-flex align-items-center justify-content-center links">
-                        @if (Route::has('login'))
-                            @auth
-                                <a href="{{ url('/home') }}">Home</a>
-                            @else
-                                <a href="{{ route('login') }}">Log in</a>
+                <div class=" col-12 col-sm-2 col-md-2 col-lg-1 d-flex align-items-center justify-content-center links">
+                    @if (Route::has('login'))
+                        @auth
+                            <a href="{{ url('/home') }}">Home</a>
+                        @else
+                            <a href="{{ route('login') }}">Log in</a>
 
 
-                            @endauth
-                        @endif
-                    </div>
+                        @endauth
+                    @endif
+                </div>
 
-                <div
-                    class="col-12 col-sm-2 col-md-1 col-lg-1 d-flex align-items-center justify-content-center links">
+                <div class="col-12 col-sm-2 col-md-1 col-lg-1 d-flex align-items-center justify-content-center links">
                     <a href="{{ route('garegemet') }}">
                         <img src="{{ asset('images/yasuo.jpg') }}" alt="" class=" avatar rounded-circle">
                     </a>
@@ -62,6 +61,68 @@
                     class=" col-12 col-sm-12 col-md-6 col-lg-10 datos gris d-flex flex-column align-items-center justify-content-center align-items-sm-center align-items-lg-start text-center pb-5">
                     <h3 class="">Busca por estado o municipio</h3>
                     <input type="text">
+                </div>
+            </div>
+        </div>
+
+
+        <div class=" d-flex justify-content-around pt-5 row-cols-1">
+            <div class="col-3">
+                <div class="card bg-dark-subtle">
+                    <div class=" card-header">
+                        <img src="{{ asset('images/escapar.jpg') }}" alt="" class=" card-img">
+                    </div>
+                    <div class="card-body">
+                        <h2 class="fs-2 text-center">Taller Mecanico Dominguez</h2>
+                        <h3 class=" fs-3">9361140771</h3>
+                        <h3 class=" fs-3">davidgarcia2809@gmail.com</h3>
+                        <p class=" fs-4 fst-italic">C. plutarco elias calle s/n, Plutarco Elias Calles, 86170 Villahermosa, Tab.
+                        </p>
+                    </div>
+                    <div class=" card-footer">
+                        <a href="#" class="btn btn-secondary btn-lg">Ubicar</a>
+                        <a href="#" class="btn btn-secondary btn-lg">Agendar cita</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-3">
+                <div class="card bg-dark-subtle">
+                    <div class=" card-header">
+                        <img src="{{ asset('images/escapar.jpg') }}" alt="" class=" card-img">
+                    </div>
+                    <div class="card-body">
+                        <h2 class="fs-2 text-center">Taller Mecanico Dominguez</h2>
+                        <h3 class=" fs-3">9361140771</h3>
+                        <h3 class=" fs-3">davidgarcia2809@gmail.com</h3>
+                        <p class=" fs-4 fst-italic">C. plutarco elias calle s/n, Plutarco Elias Calles, 86170 Villahermosa, Tab.
+                        </p>
+                    </div>
+                    <div class=" card-footer">
+                        <a href="#" class="btn btn-secondary btn-lg">Ubicar</a>
+                        <a href="#" class="btn btn-secondary btn-lg">Agendar cita</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-3">
+                <div class="card bg-dark-subtle">
+                    <div class=" card-header">
+                        <img src="{{ asset('images/escapar.jpg') }}" alt="" class=" card-img">
+                    </div>
+                    <div class="card-body">
+                        <h2 class="fs-2 text-center">Taller Mecanico Dominguez</h2>
+                        <h3 class=" fs-3"><img src="{{asset("images/phone.svg")}}" alt=""> 9361140771</h3>
+                        <h3 class=" fs-3"><img src="{{asset("images/email.svg")}}" alt=""> davidgarcia2809@gmail.com</h3>
+                        <p class=" fs-4 fst-italic text-justify">C. plutarco elias calle s/n, Plutarco Elias Calles, 86170 Villahermosa, Tab.
+                        </p>
+                    </div>
+                    <div class=" card-footer mt-2 d-flex justify-content-around">
+                        <a href="#" class="btn btn-secondary btn-lg w-50 ">Ubicar</a>
+                        <a href="#" class="btn btn-secondary btn-lg w-50 ">Agendar cita</a>
+                    </div>
                 </div>
             </div>
         </div>
