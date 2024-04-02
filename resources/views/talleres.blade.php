@@ -15,8 +15,8 @@
 
 <body>
     <div class="container-fluid">
-        <div class="row" id="nav">
-            <nav class="nav">
+        <div class="row w-100 "  id="nav">
+            <nav class="nav ">
                 <div
                     class=" col-12 col-sm-8 col-md-9 col-lg-10 p-0 p-sm-5 pt-sm-0 pb-sm-0 pe-sm-0 d-flex justify-content-center justify-content-sm-start align-items-center font-weight-bold logo">
                     <h1 class=" font-weight-bold">GarageMet</h1>
@@ -66,65 +66,29 @@
         </div>
 
 
-        <div class=" d-flex justify-content-around pt-5 row-cols-1">
-            <div class="col-3">
-                <div class="card bg-dark-subtle">
-                    <div class=" card-header">
-                        <img src="{{ asset('images/escapar.jpg') }}" alt="" class=" card-img">
-                    </div>
-                    <div class="card-body">
-                        <h2 class="fs-2 text-center">Taller Mecanico Dominguez</h2>
-                        <h3 class=" fs-3">9361140771</h3>
-                        <h3 class=" fs-3">davidgarcia2809@gmail.com</h3>
-                        <p class=" fs-4 fst-italic">C. plutarco elias calle s/n, Plutarco Elias Calles, 86170 Villahermosa, Tab.
-                        </p>
-                    </div>
-                    <div class=" card-footer">
-                        <a href="#" class="btn btn-secondary btn-lg">Ubicar</a>
-                        <a href="#" class="btn btn-secondary btn-lg">Agendar cita</a>
-                    </div>
-                </div>
-            </div>
+<div class=" d-flex justify-content-around pt-5 row">
+
+@foreach ($talleres as $item)
+<div class="col-3 pt-5 ">
+    <div class="card ">
+        <div class=" card-header">
+            <img src="{{ asset('images/escapar.jpg') }}" alt="" class=" card-img">
+        </div>
+        <div class="card-body">
+            <h2 class="fs-2 text-center">{{$item->nombre}}</h2>
+            <h3 class=" fs-3"><img src="{{asset("images/phone.svg")}}" alt=""> {{$item->telefono}}</h3>
+            <h3 class=" fs-3"><img src="{{asset("images/email.svg")}}" alt=""> {{$item->correo}}</h3>
+            <p class=" fs-4 fst-italic text-justify">{{$item->direccion}}</p>
+        </div>
+        <div class=" card-footer mt-2 d-flex justify-content-around pb-4 pt-4">
+            <a href="#" class="btn btn-secondary btn-lg w-50 me-2">Ubicar</a>
+            <a href="#" class="btn btn-secondary btn-lg w-50 ml-2">Agendar cita</a>
+        </div>
+    </div>
+</div>   
+@endforeach
 
 
-            <div class="col-3">
-                <div class="card bg-dark-subtle">
-                    <div class=" card-header">
-                        <img src="{{ asset('images/escapar.jpg') }}" alt="" class=" card-img">
-                    </div>
-                    <div class="card-body">
-                        <h2 class="fs-2 text-center">Taller Mecanico Dominguez</h2>
-                        <h3 class=" fs-3">9361140771</h3>
-                        <h3 class=" fs-3">davidgarcia2809@gmail.com</h3>
-                        <p class=" fs-4 fst-italic">C. plutarco elias calle s/n, Plutarco Elias Calles, 86170 Villahermosa, Tab.
-                        </p>
-                    </div>
-                    <div class=" card-footer">
-                        <a href="#" class="btn btn-secondary btn-lg">Ubicar</a>
-                        <a href="#" class="btn btn-secondary btn-lg">Agendar cita</a>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-3">
-                <div class="card bg-dark-subtle">
-                    <div class=" card-header">
-                        <img src="{{ asset('images/escapar.jpg') }}" alt="" class=" card-img">
-                    </div>
-                    <div class="card-body">
-                        <h2 class="fs-2 text-center">Taller Mecanico Dominguez</h2>
-                        <h3 class=" fs-3"><img src="{{asset("images/phone.svg")}}" alt=""> 9361140771</h3>
-                        <h3 class=" fs-3"><img src="{{asset("images/email.svg")}}" alt=""> davidgarcia2809@gmail.com</h3>
-                        <p class=" fs-4 fst-italic text-justify">C. plutarco elias calle s/n, Plutarco Elias Calles, 86170 Villahermosa, Tab.
-                        </p>
-                    </div>
-                    <div class=" card-footer mt-2 d-flex justify-content-around">
-                        <a href="#" class="btn btn-secondary btn-lg w-50 ">Ubicar</a>
-                        <a href="#" class="btn btn-secondary btn-lg w-50 ">Agendar cita</a>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 

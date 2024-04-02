@@ -10,6 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,100;1,500;1,700&display=swap"
         rel="stylesheet">
+        <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sidebars/">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
     <title>GarageMet</title>
 </head>
 
@@ -17,54 +19,103 @@
     <div class="container-fluid">
         <div class="row" id="nav">
             <nav class="nav " id="nav">
-                <div class="col-12 col-sm-12  col-lg-4 logo col-xl-6">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-6 logo col-xl-7">
                     <h1>GarageMet</h1>
                 </div>
 
-                <div class="col-12 col-sm-12 col-lg-8 col-xl-6">
-                    <div class="row underline-hover">
-                        <di v class="col-12 col-sm col-md d-flex align-items-center justify-content-center links"><a
-                                class="underline-hover" href="{{ route('talleres') }}">Talleres</a></di>
+                <div class=" col-6 col-sm-6 col-md-8 col-lg-6 col-xl-5 row">
+                        <div class="col-12 col-sm col-md links d-none d-md-block">
+                            <a class="underline-hover d-flex align-items-center justify-content-center" href="{{ route('talleres') }}">Talleres</a></div>
 
 
-                        <div class="col-12 col-sm col-md d-flex align-items-center justify-content-center links"><a
-                                class="underline-hover" href="#Nosotros">Nosotros</a></div>
+                            <div
+                                class="col-12 col-sm col-md links d-none d-md-block">
+                                <a class="underline-hover d-flex align-items-center justify-content-center" href="#Nosotros">Nosotros</a></div>
 
 
-                        <div class="col-12 col-sm col-md d-flex align-items-center justify-content-center links"><a
-                                class="underline-hover" href="#Planes">Planes</a></div>
+                            <div
+                                class="col-12 col-sm col-md links d-none d-md-block">
+                                <a class="underline-hover d-flex align-items-center justify-content-center" href="#Planes">Planes</a></div>
 
 
-                        <div class="col-12 col-sm col-md d-flex align-items-center justify-content-center links">
-                            @if (Route::has('login'))
-                                @auth
-                                    <a href="{{ url('/home') }}">Home</a>
-                                @else
-                                    <a href="{{ route('login') }}">Log in</a>
+
+                            <div
+                                class="col-12 col-sm col-md  links d-none d-md-block">
+                                @if (Route::has('login'))
+                                    @auth
+                                        <a href="{{ url('/home') }}" class="d-flex align-items-center justify-content-center">Home</a>
+                                    @else
+                                        <a href="{{ route('login') }}" class="d-flex align-items-center justify-content-center">Log in</a>
 
 
-                                @endauth
-                            @endif
+                                    @endauth
+                                @endif
+                            </div>
+
+
+                            <div class="col-12 col-sm col-md links d-none d-md-block">
+                                <a href="{{ route('garegemet') }}" class="d-flex align-items-center justify-content-center">
+                                    <img src="{{ asset('images/yasuo.jpg') }}" alt=""
+                                        class=" avatar rounded-circle">
+                                </a>
+                            </div>
+
+                            <div class="col-12 pe-5 d-md-none d-flex justify-content-end">
+                                <a class="d-flex align-items-center justify-content-end" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                    <img src="{{asset("images/bars.svg")}}" alt="">
+                                </a>
+                            </div>
                         </div>
-
-
-                        <div class="col-12 col-sm col-md d-flex align-items-center justify-content-center links">
-                            <a href="{{ route('garegemet') }}">
-                                <img src="{{ asset('images/yasuo.jpg') }}" alt=""
-                                    class=" avatar rounded-circle">
-                            </a>
-                        </div>
-
-
-                    </div>
                 </div>
             </nav>
         </div>
 
+        <div class=" collapse w-100 position-fixed col-12 bg-black pt-5 mt-5 d-md-none" id="collapseExample">
+            <div class="card w-100 bg-black border-0">
+                <div class="col-sm-12 d-flex align-items-center justify-content-center links pt-5">
+                    <a class="underline-hover" href="{{ route('talleres') }}">Talleres</a></div>
 
-        <div class="row">
+
+                    <div
+                        class="col-sm-12 col-md d-flex align-items-center justify-content-center links">
+                        <a class="underline-hover" href="#Nosotros">Nosotros</a></div>
+
+
+                    <div
+                        class="col-sm-12 col-md d-flex align-items-center justify-content-center links">
+                        <a class="underline-hover" href="#Planes">Planes</a></div>
+
+
+
+                    <div
+                        class="col-sm-12 d-flex align-items-center justify-content-center links">
+                        @if (Route::has('login'))
+                            @auth
+                                <a href="{{ url('/home') }}">Home</a>
+                            @else
+                                <a href="{{ route('login') }}">Log in</a>
+
+
+                            @endauth
+                        @endif
+                    </div>
+
+
+                    <div class="col-sm-12 d-flex align-items-center justify-content-center links pb-5">
+                        <a href="{{ route('garegemet') }}">
+                            <img src="{{ asset('images/yasuo.jpg') }}" alt=""
+                                class=" avatar rounded-circle">
+                        </a>
+                    </div>
+            </div>
+          </div>
+
+
+        
+          <div class="row">
             <div class="col imgpstc"></div>
         </div>
+        
         <div class="row acercade" id="Nosotros">
             <div class="col-12 col-xl-4 p-5 pt-0 pb-0">
                 <h3>Nostros</h3>
@@ -105,14 +156,14 @@
                     y darle la mejor atencion a tus clientes, es facil de usar e intuitivo.</p>
             </div>
             <div class="col-12 col-lg-6 justify-content-center align-items-center d-flex">
-                <img src="{{asset("images/img2.jpg")}}" alt="" class="img-fluid p-5 pt-0 pb-5">
+                <img src="{{ asset('images/img2.jpg') }}" alt="" class="img-fluid p-5 pt-0 pb-5">
             </div>
         </div>
 
 
         <div class="productividad row">
             <div class="col-12 col-lg-6 justify-content-center align-items-center d-flex">
-                <img src="{{asset("images/productividad.jpg")}}" alt="" class="img-fluid p-5 pt-0 pb-0">
+                <img src="{{ asset('images/productividad.jpg') }}" alt="" class="img-fluid p-5 pt-0 pb-0">
             </div>
             <div class="col-12 col-lg-6 d-flex justify-content-center flex-column p-5 pt-0 pb-0">
                 <h2 class="pb-2 pt-5">AUMENTA TU PRODUCTIVIDAD Y LA DE TU EQUIPO</h2>
@@ -143,14 +194,14 @@
             </div>
 
             <div class="col-12 col-lg-6 justify-content-center align-items-center d-flex p-5 pt-0 pb-0">
-                <img src="{{asset("images/reportes.jpg")}}" alt="" class="img-fluid p-5 pt-0 pb-0">
+                <img src="{{ asset('images/reportes.jpg') }}" alt="" class="img-fluid p-5 pt-0 pb-0">
             </div>
         </div>
 
 
         <div class="escapar row">
             <div class="col-12 col-lg-6 justify-content-center align-items-center d-flex p-5 pt-0 pb-0">
-                <img src="{{asset("images/escapar.jpg")}}" alt="" class="img-fluid img-fluid p-5 pt-0 pb-0">
+                <img src="{{ asset('images/escapar.jpg') }}" alt="" class="img-fluid img-fluid p-5 pt-0 pb-0">
             </div>
 
             <div class="col-12 col-lg-6 d-flex justify-content-center flex-column p-5 pt-0 pb-0">
@@ -248,6 +299,7 @@
     </div>
 
 </body>
-<script src="js/bootstrap.min.js"></script>
+<script src="{{ asset('CSS/Bootstrap/js/script.js') }}"></script>
+<script src="{{ asset('CSS/Bootstrap/js/bootstrap.min.js') }}"></script>
 
 </html>

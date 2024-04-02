@@ -17,7 +17,8 @@ body {
     color: white;
     padding-top: 1.5em;
     padding-bottom: 1.5em;
-
+    Position: fixed;
+    z-index: 1;
 }
 
 .links a {
