@@ -70,7 +70,7 @@
             </nav>
         </div>
 
-        <div class=" collapse w-100 position-fixed col-12 bg-black pt-5 mt-5 d-md-none" id="collapseExample">
+        <div class=" collapse w-100 position-fixed col-12 bg-black pt-5 mt-5" id="collapseExample">
             <div class="card w-100 bg-black border-0">
                 <div class="col-sm-12 d-flex align-items-center justify-content-center links pt-5">
                     <a class="underline-hover" href="{{ route('talleres') }}">Talleres</a></div>

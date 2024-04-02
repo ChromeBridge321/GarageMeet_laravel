@@ -18,6 +18,9 @@ body {
     padding-top: 1.5em;
     padding-bottom: 1.5em;
     Position: fixed;
+    z-index: 2;
+}
+.arriba{
     z-index: 1;
 }
 
