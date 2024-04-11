@@ -31,7 +31,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/talleres', [App\Http\Controllers\TalleresController::class, 'index'])->name('talleres');
-Route::get('/talleres', [App\Http\Controllers\TalleresController::class, 'buscar'])->name('buscar_talleres');
+Route::get('/buscar-taller', [App\Http\Controllers\TalleresController::class, 'buscar'])->name('buscar_talleres');
 Route::get('/citas', [App\Http\Controllers\CitasController::class, 'index'])->name('citas');
 Route::get('/empleados', [App\Http\Controllers\EmpleadosController::class, 'index'])->name('empleados');
 Route::get('/clientes', [App\Http\Controllers\ClientesController::class, 'index'])->name('clientes');
