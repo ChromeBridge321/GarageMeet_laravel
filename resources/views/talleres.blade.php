@@ -107,24 +107,24 @@
 
             @foreach ($talleres as $item)
                 <div class=" col-12 col-sm-12 col-md-6 col-lg-4 pb-4 d-flex justify-content-center">
-                    <div class="card bg-white">
-                        <h2 class="fs-2 text-center">{{ $item->nombre }}</h2>
-                        <div class=" card-body row d-flex justify-content-center">
+                    <div class="card text-white" style="background-color: var( --bs-gray-500);">
+                        <h2 class="fs-1 text-center">{{ $item->nombre }}</h2>
+                        <div class=" card-body row d-flex justify-content-center ps-5 pe-5">
                             <div class="col-8 mb-3">
-                                <img src="{{ asset('images/escapar.jpg') }}" alt="" class=" card-img">
+                                <img src="{{ asset('images/taller.jpg') }}" alt="" class=" card-img rounded-4">
                             </div>
                             <div class="col-12">
                                 <h3 class=" fs-3"><img src="{{ asset('images/phone.svg') }}" alt="">
                                     {{ $item->telefono }}</h3>
-                                <h3 class=" fs-4"><img src="{{ asset('images/email.svg') }}" alt="">
+                                <h3 class=" fs-3"><img src="{{ asset('images/email.svg') }}" alt="">
                                     {{ $item->correo }}</h3>
                                 <p class=" fs-4 fst-italic text-justify">{{ $item->direccion }}</p>
                             </div>
 
                         </div>
                         <div class=" card-footer mt-2 d-flex justify-content-around pb-4 pt-4">
-                            <a href="#" class="btn btn-secondary btn-lg w-50 me-2">Ubicar</a>
-                            <a href="#" class="btn btn-secondary btn-lg w-50 ml-2">Agendar cita</a>
+                            <a href="#" class="text-white btn btn-primary w-50 me-2 fs-3 ">Ubicar</a>
+                            <a href="#" class="text-white btn btn-primary w-50 ml-2 fs-3 ">Agendar cita</a>
                         </div>
                     </div>
                 </div>
