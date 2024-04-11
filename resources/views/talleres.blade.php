@@ -82,21 +82,26 @@
                 <h1 class="titulo w-100 text-bold">LOCALIZA TU TALLER MECANICO</h1>
             </div>
 
-            <div
+            <form action="{{ route('buscar_talleres') }}" method="get"
                 class="col-sm-6 col-md-12 col-lg d-flex flex-column-reverse flex-sm-column-reverse flex-md-row-reverse flex-lg-row w-100 p-0">
+                @csrf
+
                 <div
                     class="col-12 col-sm-12 col-md-6 col-lg-2 d-flex justify-content-center align-items-center gris pb-5 pb-md-0 pb-sm-5">
-                    <a href="#" class="btn btn-danger w-75">
+                    <button class="btn btn-danger w-75" type="submit">
                         <img src="{{ asset('Images/track.svg') }}" alt="">
-                    </a>
+                    </button>
                 </div>
+
+
+
 
                 <div
                     class=" col-12 col-sm-12 col-md-6 col-lg-10 datos gris d-flex flex-column align-items-center justify-content-center align-items-sm-center align-items-lg-start text-center pb-5">
                     <h3 class="">Busca por estado o municipio</h3>
-                    <input type="text">
+                    <input type="text" name="nombre">
                 </div>
-            </div>
+            </form>
         </div>
         <div style="height: 5rem;" class=" d-sm-none">
         </div>
