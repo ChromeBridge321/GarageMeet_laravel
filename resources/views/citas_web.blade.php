@@ -74,73 +74,72 @@
             </div>
         </div>
 
-        <form action="{{ route('citas.agendar') }}" class=" text-white pt-5 mt-5" method="post">
+        <form action="{{ route('citas.agendar') }}" class=" text-white mt-5 row d-flex justify-content-center"
+            method="post">
             @csrf
-
-            <div class="pt-5 mt-5">
-                <input type="text" name="taller_id" value="{{ $taller->id }}" class=" d-none">
-                <h1>{{ $taller->nombre }}</h1>
+            <div class="mt-5"></div>
+            <div class=" row pt-5 mt-5 col-11 rounded-2 pe-5 ps-5" style="background-color: var(--bs-gray-500);">
                 <div>
-                    @if (session('true'))
-                        <div class=" bg-success">
-                            <h1 class=" text-white">Cita agendada</h1>
-                        </div>
-                    @endif
+                    <div>
+                        @if (session('true'))
+                            <div class=" bg-success">
+                                <h1 class=" text-white">Cita agendada</h1>
+                            </div>
+                        @endif
 
-                    @if (session('fail'))
-                        <div class=" bg-danger">
-                            <h1 class=" text-white">No fue posible agendar la cita</h1>
-                        </div>
-                    @endif
+                        @if (session('fail'))
+                            <div class=" bg-danger">
+                                <h1 class=" text-white">No fue posible agendar la cita</h1>
+                            </div>
+                        @endif
+                        <h2 class="">FORMULARIO DE DATOS DE PARA UNA CITA</h2>
+                    </div>
+
                 </div>
-                <h2>FORMULARIO DE DATOS DE PARA UNA CITA</h2>
-            </div>
-            <div>
-                <label for="nombre">Nombre</label>
-                <input type="text" name="nombre" id="" value="{{ $usuario->name }}">
-            </div>
 
-            <div>
-                <label for="correo">Correo</label>
-                <input type="text" name="correo" id="" value="{{ $usuario->email }}">
-            </div>
+                <div class=" col-6">
+                    <label class=" form-label fs-4" for="nombre">Nombre</label>
+                    <input class=" form-control" type="text" name="nombre" id=""
+                        value="{{ $usuario->name }}">
+                </div>
 
-            <div>
-                <label for="telefono">Telefono</label>
-                <input type="number" name="telefono" id="">
+                <div class=" col-6">
+                    <label class=" form-label" for="correo">Correo</label>
+                    <input class=" form-control" type="text" name="correo" id=""
+                        value="{{ $usuario->email }}">
+                </div>
 
+                <div class=" col-6">
+                    <label class=" form-label" for="telefono">Telefono</label>
+                    <input class=" form-control" type="number" name="telefono" id="">
+                </div>
+                <div class=" col-6">
+                    <label class=" form-label" for="fecha">Fecha</label>
+                    <input class=" form-control" type="text" name="fecha" id="">
+                </div>
 
+                <div class=" pt-4">
+                    <h2>DATOS DE AUTOMOVIL</h2>
+                </div>
+                <div>
+                    <label class=" form-label" for="vehiculo">Vehiculo</label>
+                    <input class=" form-control" type="text" name="vehiculo" id="">
+                    </select>
+                </div>
+                <div>
+                    <label class=" form-label" for="placas">Placas</label>
+                    <input class=" form-control" type="text" name="placas" id="">
+                </div>
 
+                <div>
+                    <label class=" form-label" for="observaciones">Observaciones</label>
+                    <input class=" form-control" type="text" name="observaciones" id=""
+                        placeholder="Describa los problemas que presenta su vehiculo">
+                </div>
 
-
-
-            </div>
-            <div>
-                <label for="fecha">Fecha</label>
-                <input type="text" name="fecha" id="">
-            </div>
-
-            <div>
-                <h2>DATOS DE AUTOMOVIL</h2>
-            </div>
-            <div>
-                <label for="vehiculo">Vehiculo</label>
-                <input type="text" name="vehiculo" id="">
-                </select>
-            </div>
-            <div>
-                <label for="placas">Placas</label>
-                <input type="text" name="placas" id="">
-            </div>
-
-            <div>
-                <label for="observaciones">Observaciones</label>
-                <input type="text" name="observaciones" id=""
-                    placeholder="Describa los problemas que presenta su vehiculo">
-            </div>
-
-            <div>
-                <button type="submit">Agendar</button>
+                <div class=" pb-5 pt-5 d-flex justify-content-end">
+                    <button class=" btn btn-primary" type="submit">Agendar</button>
+                </div>
             </div>
         </form>
     </div>

@@ -228,7 +228,11 @@
                         <th scope="col">Nombre</th>
                         <th scope="col">Correo</th>
                         <th scope="col">Telefono</th>
-                        <th scope="col">Direccion</th>
+                        <th scope="col">Vehiculo</th>
+                        <th scope="col">Placas</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Oberservaciones</th>
                         <th scope="col" class=" text-center">Accion</th>
 
                     </tr>
@@ -244,9 +248,13 @@
                             <td>{{ $item->nombre }}</td>
                             <td>{{ $item->correo }}</td>
                             <td>{{ $item->telefono }}</td>
+                            <td>{{ $item->Vehiculo }}</td>
+                            <td>{{ $item->Placas }}</td>
+                            <td>{{ $item->Estado }}</td>
                             <td>{{ $item->direccion }}</td>
-                            <th class=" d-flex justify-content-around"><button data-bs-toggle="modal" data-bs-target="#ModalEditar{{ $item->id }}"
-                                    type="button" class="btn btn-primary">Editar</button>
+                            <th class=" d-flex justify-content-around"><button data-bs-toggle="modal"
+                                    data-bs-target="#ModalEditar{{ $item->id }}" type="button"
+                                    class="btn btn-primary">Editar</button>
                                 <a type="button" class="btn btn-danger" onclick="return res()"
                                     href="{{ route('clientes.delete', $item->id) }}">Eliminar</a>
                             </th>
@@ -272,8 +280,7 @@
                                                 </div>
 
                                                 <div class="col-12 d-flex flex-column w-100">
-                                                    <label for=""
-                                                        class="form-label ">Nombre</label>
+                                                    <label for="" class="form-label ">Nombre</label>
                                                     <input type="text" class="w-100 form-check-input"
                                                         name="Nombre" value="{{ $item->nombre }}">
                                                 </div>

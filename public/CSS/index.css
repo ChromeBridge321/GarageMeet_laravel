@@ -1,13 +1,11 @@
 html {
     font-family: 'Poppins', sans-serif;
-    font-size: 62.5%;
+
 }
 
 
-
-
 body {
-    font-size: 16px;
+
     font-family: 'Poppins', sans-serif;
     background-color: #1B1B1B;
 }
@@ -232,48 +230,6 @@ body {
     text-align: justify;
 }
 
-.card {
-    background-color: rgb(255, 255, 255);
-    width: 95%;
-    font-size: 1.5em;
-    border-radius: 1em;
-    padding-top: 1em;
-    padding-right: 0.2em;
-    padding-left: 0.2em;
-}
-
-
-.card h2 {
-    font-size: 1.2em;
-    font-weight: bold;
-}
-
-.card p {
-    font-size: 1em;
-}
-
-.card li {
-    font-size: 1em;
-}
-
-.card h1 {
-    font-size: 1.3em;
-    font-weight: bold;
-}
-
-.card small {
-    font-size: 0.5em;
-    color: #616161;
-}
-
-.card button {
-    width: 90%;
-    height: 4em;
-}
-
-.card button h2 {
-    font-size: 1.5em;
-}
 
 
 footer {
@@ -360,112 +316,8 @@ footer h3 {
 
 }
 
-.carrousel {
-    width: 100%;
-}
-
-.conteCarrousel {
-    width: 100%;
-    height: 200px;
-    overflow: hidden;
-}
-
-.itemCarrousel {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-.itemCarrouselTarjeta {
-    width: 100%;
-    height: 100%;
-}
-
-.itemCarrouselArrows {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
-}
-
-.itemCarrouselArrows>i:hover {
-    cursor: pointer;
-}
-
-#itemCarrousel-1 {
-    background-color: rgb(226, 50, 50);
-}
-
-#itemCarrousel-2 {
-    background-color: rgb(50, 200, 226);
-}
-
-#itemCarrousel-3 {
-    background-color: rgb(200, 226, 50);
-}
-
-.conteCarrouselController {
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.conteCarrouselController>a {
-    text-decoration: none;
-    font-size: 2em;
-    color: grey;
-}
-
-.itemCarrouselArrows>a>i {
-    color: white;
-}
-
 .gris2 {
     background-color: #484848;
-}
-
-.border_r {
-    border-radius: 0.5em;
-}
-
-.formulario_citas input {
-    height: 1.7em;
-    font-size: 1.5em;
-}
-
-.formulario_citas label {
-    font-size: 1.5em;
-    color: white;
-}
-
-
-.formulario_citas div {
-    padding: 0 0.5em;
-}
-
-.formulario_citas select {
-    height: 1.7em;
-    font-size: 1.5em;
-    border: none;
-    stroke: none;
-}
-
-.formulario_citas h1 {
-    color: white;
-    font-weight: bold;
-}
-
-
-.formulario_citas h2 {
-    color: white;
-    font-weight: bold;
 }
 
 .avatar{

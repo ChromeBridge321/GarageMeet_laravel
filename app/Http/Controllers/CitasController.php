@@ -76,9 +76,9 @@ class CitasController extends Controller
         };
 
         if ($citas == true) {
-            return back()->with('true', 'a');
+            return back()->with('true', 'Cita realizada con exito');
         } else {
-            return back()->with('fail', 'b');
+            return back()->with('fail', 'Parace que algo salio mal');
         }
     }
 }

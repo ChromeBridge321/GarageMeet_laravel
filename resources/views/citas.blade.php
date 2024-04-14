@@ -102,30 +102,38 @@
 
     <div class=" container-fluid p-5">
         <div class="col-12 mt-2 table-responsive">
-            <table class="table table-hover table-light table-responsive table-striped table-bordered">
+            <table class="table table-light table-responsive table-striped table-bordered">
                 <thead>
                     <tr class=" table-primary">
                         <th scope="col">ID</th>
-                        <th scope="col">Usuario</th>
-                        <th scope="col">Fecha de la cita</th>
-                        <th class=" text-center" scope="col">Estado de la cita</th>
-                        <th scope="col">Accion</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Correo</th>
+                        <th scope="col">Telefono</th>
+                        <th scope="col">Vehiculo</th>
+                        <th scope="col">Placas</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Oberservaciones</th>
+                        <th scope="col" class=" text-center">Accion</th>
 
                     </tr>
                 </thead>
                 <tbody class="table-group-divider ">
                     @foreach ($citas as $item)
                         <tr>
-                            <th scope="row">{{ $item->id }}</th>
+                            <td>{{ $item->id }}</td>
                             <td>{{ $item->Nombre }}</td>
-                            <td>{{ $item->fecha_cita }}</td>
+                            <td>{{ $item->Correo }}</td>
+                            <td>{{ $item->Telefono }}</td>
+                            <td>{{ $item->Vehiculo }}</td>
+                            <td>{{ $item->Placas }}</td>
                             @if ($item->estado == 1)
-                                <td class="d-flex justify-content-center"><button
-                                        class="btn btn-success w-50">Activo</button></td>
+                                <td> <button type="button" class="btn text-bg-success w-100">Activo</button></td>
                             @else
-                                <td class="d-flex justify-content-center"><button
-                                        class="btn btn-danger w-50">Inactivo</button></td>
+                                <td><button type="button" class="btn text-bg-danger w-100">Inactivo</button></td>
                             @endif
+                            <td>{{ $item->fecha_cita }}</td>
+                            <td>{{ $item->observaciones }}</td>
                             <th><button type="button" class="btn btn-primary">Editar</button>
                             </th>
                         </tr>

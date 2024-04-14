@@ -26,12 +26,14 @@ class TalleresController extends Controller
      */
     public function index()
     {
+
         $talleres = [];
         return view('talleres')->with('talleres', $talleres);
     }
 
     public function buscar(Request $request)
     {
+        $usuario = auth()->user();
         $talleres = DB::table('talleres_mecanicos as t')
             ->join('municipios as m', 'm.id', 't.municipios_id')
             ->join('estados as e', 'e.id', 'm.estados_id')
@@ -39,6 +41,6 @@ class TalleresController extends Controller
             ->where(DB::raw("CONCAT(m.nombre, e.nombre)"), 'like', "%$request->nombre%")
             ->orwhere(DB::raw("CONCAT(m.nombre, ' ', e.nombre)"), 'like', "%$request->nombre%")
             ->get();
-        return view('talleres')->with('talleres', $talleres);
+        return view('talleres')->with('talleres', $talleres)->with('usuario', $usuario);
     }
 }

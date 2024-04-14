@@ -18,6 +18,18 @@
 </head>
 
 
+<style>
+    html {
+        font-family: 'Poppins', sans-serif;
+        font-size: 62.5%;
+    }
+
+    body {
+        font-size: 16px;
+        font-family: 'Poppins', sans-serif;
+        background-color: #1B1B1B;
+    }
+</style>
 
 <body>
     <div class="container-fluid">
@@ -80,6 +92,8 @@
 
 
 
+
+
         <div class="row buscar pt-5 mt-5">
             <div
                 class="col-sm-12 col-md-12 col-lg-6 d-flex justify-content-center align-items-center text-center gris mt-5 mt-sm-5 pt-5 pt-sm-5 pb-5">
@@ -110,15 +124,29 @@
         </div>
         <div style="height: 5rem;" class=" d-sm-none">
         </div>
+
+
         <div style="height: 10rem;" class=" d-md-none">
         </div>
+
+        @if (session('true'))
+            <div class=" row text-bg-success" style="height: 10rem;">
+                <h2 class=" d-flex justify-content-center align-items-center">{{ session('true') }}</h2>
+            </div>
+        @endif
+
+        @if (session('fail'))
+            <div class=" row text-bg-danger" style="height: 10rem;">
+                <h2 class=" d-flex justify-content-center align-items-center">{{ session('fail') }}</h2>
+            </div>
+        @endif
 
         <div class="d-flex justify-content-around pt-5 mt-5 row">
             @if (count($talleres) > 0)
                 @foreach ($talleres as $item)
                     <div class="col-12 col-sm-12 col-md-6 col-lg-4 pb-4 d-flex justify-content-center">
-                        <div class="card text-white" style="background-color: var(--bs-gray-500);">
-                            <h2 class="fs-1 text-center">{{ $item->nombre }}</h2>
+                        <div class="card text-white rounded-5" style="background-color: var(--bs-gray-500); ">
+                            <h2 class="fs-1 text-center pt-4 fw-bolder">{{ $item->nombre }}</h2>
                             <div class="card-body row d-flex justify-content-center ps-5 pe-5">
                                 <div class="col-8 mb-3">
                                     <img src="{{ asset('images/taller.jpg') }}" alt=""
@@ -134,8 +162,13 @@
                             </div>
                             <div class="card-footer mt-2 d-flex justify-content-around pb-4 pt-4">
                                 <a href="#" class="text-white btn btn-primary w-50 me-2 fs-3 ">Ubicar</a>
-                                <a href="#" class="text-white btn btn-primary w-50 ml-2 fs-3 enviar-cita">Agendar
-                                    cita</a>
+                                <!-- Button trigger modal -->
+                                <button href="#" class="text-white btn btn-primary w-50 ml-2 fs-3 enviar-cita"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModal-{{ $item->id }}">Agendar
+                                    cita</button>
+
+
+                                {{-- 
                                 <form action="{{ route('citas.web') }}" method="get"
                                     id="publicar-{{ $item->id }}">
                                     @csrf
@@ -143,7 +176,83 @@
                                         value="{{ $item->id }}">
                                     <input class="d-none" type="text" name="nombre"
                                         value="{{ $item->nombre }}">
-                                </form>
+                                </form> --}}
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal -->
+                    <div class=" modal fade " id="exampleModal-{{ $item->id }}" data-bs-backdrop="static"
+                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-xl fs-1 modal-dialog-centered ">
+                            <div class="modal-content ">
+                                <div class="modal-header ps-5">
+                                    <h1 class="modal-title fw-bold" id="exampleModalLabel">{{ $item->nombre }}</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+
+                                </div>
+                                <div class="modal-body">
+                                    <form action="{{ route('citas.agendar') }}"
+                                        class="row d-flex justify-content-center" method="post">
+                                        @csrf
+                                        <div class=" row pe-5 ps-5">
+                                            <div class=" col-6 d-flex flex-column">
+                                                <label class=" form-label fs-2" for="nombre">Nombre</label>
+                                                <input class=" form-control fs-3" type="text" name="nombre"
+                                                    id="" value="{{ $usuario->name }}">
+                                                <input type="text" name="taller_id" id=""
+                                                    value="{{ $item->id }}" class=" d-none">
+                                            </div>
+
+                                            <div class=" col-6 d-flex flex-column">
+                                                <label class=" form-label fs-2" for="correo">Correo</label>
+                                                <input class=" form-control fs-2" type="text" name="correo"
+                                                    id="" value="{{ $usuario->email }}">
+                                            </div>
+
+                                            <div class=" col-6">
+                                                <label class=" form-label fs-2" for="telefono">Telefono</label>
+                                                <input class=" form-control fs-2" type="number" name="telefono"
+                                                    id="">
+                                            </div>
+                                            <div class=" col-6">
+                                                <label class=" form-label fs-2" for="fecha">Fecha</label>
+                                                <input class=" form-control fs-2" type="text" name="fecha"
+                                                    id="">
+                                            </div>
+
+                                            <div class=" pt-4">
+                                                <h2>DATOS DE AUTOMOVIL</h2>
+                                            </div>
+                                            <div>
+                                                <label class=" form-label fs-2" for="vehiculo">Vehiculo</label>
+                                                <input class=" form-control fs-2" type="text" name="vehiculo"
+                                                    id="">
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label class=" form-labe fs-2l" for="placas">Placas</label>
+                                                <input class=" form-control fs-2" type="text" name="placas"
+                                                    id="">
+                                            </div>
+
+                                            <div>
+                                                <label class=" form-label fs-2"
+                                                    for="observaciones">Observaciones</label>
+                                                <input class=" form-control fs-2" type="text" name="observaciones"
+                                                    id=""
+                                                    placeholder="Describa los problemas que presenta su vehiculo">
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer mt-4">
+                                            <button type="button" class="btn btn-danger fs-3"
+                                                data-bs-dismiss="modal">Cancelar</button>
+                                            <button type="submit" class="btn btn-success fs-3">Agendar</button>
+                                        </div>
+                                    </form>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -159,16 +268,6 @@
 <script src="{{ asset('CSS/Bootstrap/js/script.js') }}"></script>
 <script src="{{ asset('CSS/Bootstrap/js/bootstrap.min.js') }}"></script>
 
-<script>
-    $(document).ready(function() {
-        $('.enviar-cita').click(function(event) {
-            event.preventDefault(); // Evita el comportamiento predeterminado del enlace
-            var formId = 'publicar-' + $(this).closest('.card-footer').find('form').attr('id').split(
-                '-')[1];
-            $('#' + formId).submit(); // Envía el formulario correspondiente
-        });
-    });
-</script>
 <script>
     $('#nombre').autocomplete({
         source: function(request, response) {
