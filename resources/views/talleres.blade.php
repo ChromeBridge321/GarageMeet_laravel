@@ -113,8 +113,7 @@
         <div style="height: 10rem;" class=" d-md-none">
         </div>
 
-        <div class=" d-flex justify-content-around pt-5 mt-5 row ">
-
+        <div class="d-flex justify-content-around pt-5 mt-5 row">
             @if (count($talleres) > 0)
                 @foreach ($talleres as $item)
                     <div class="col-12 col-sm-12 col-md-6 col-lg-4 pb-4 d-flex justify-content-center">
@@ -135,8 +134,16 @@
                             </div>
                             <div class="card-footer mt-2 d-flex justify-content-around pb-4 pt-4">
                                 <a href="#" class="text-white btn btn-primary w-50 me-2 fs-3 ">Ubicar</a>
-                                <a href="{{ route('citas.web') }}"
-                                    class="text-white btn btn-primary w-50 ml-2 fs-3 ">Agendar cita</a>
+                                <a href="#" class="text-white btn btn-primary w-50 ml-2 fs-3 enviar-cita">Agendar
+                                    cita</a>
+                                <form action="{{ route('citas.web') }}" method="get"
+                                    id="publicar-{{ $item->id }}">
+                                    @csrf
+                                    <input class="d-none" type="number" name="id"
+                                        value="{{ $item->id }}">
+                                    <input class="d-none" type="text" name="nombre"
+                                        value="{{ $item->nombre }}">
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -152,7 +159,16 @@
 <script src="{{ asset('CSS/Bootstrap/js/script.js') }}"></script>
 <script src="{{ asset('CSS/Bootstrap/js/bootstrap.min.js') }}"></script>
 
-
+<script>
+    $(document).ready(function() {
+        $('.enviar-cita').click(function(event) {
+            event.preventDefault(); // Evita el comportamiento predeterminado del enlace
+            var formId = 'publicar-' + $(this).closest('.card-footer').find('form').attr('id').split(
+                '-')[1];
+            $('#' + formId).submit(); // Envía el formulario correspondiente
+        });
+    });
+</script>
 <script>
     $('#nombre').autocomplete({
         source: function(request, response) {

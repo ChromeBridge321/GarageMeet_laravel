@@ -91,6 +91,9 @@
                     document.getElementById('logout-form').submit();">
                         {{ __('Cerrar Sesion') }}
                     </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                     <img src="{{ asset('images/salir.svg') }}" alt="">
                 </div>
             </div>

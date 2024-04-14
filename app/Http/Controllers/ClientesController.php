@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\clientes;
-use App\Models\user;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
 use Illuminate\Pagination\Paginator;
@@ -146,7 +144,8 @@ class ClientesController extends Controller
     }
 
 
-    public function search(Request $request){
+    public function search(Request $request)
+    {
 
         $correo = (auth()->user()->email);
 

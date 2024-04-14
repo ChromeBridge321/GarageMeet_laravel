@@ -83,13 +83,16 @@
                             <img src="{{ asset('images/yasuo.jpg') }}" alt="" class=" avatar rounded-circle">
                         </a>
                     </div>
-    
+
                     <div class="col">
                         <a class=" h6" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
                             {{ __('Cerrar Sesion') }}
                         </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
                         <img src="{{ asset('images/salir.svg') }}" alt="">
                     </div>
                 </div>
@@ -98,87 +101,39 @@
     </div>
 
     <div class=" container-fluid p-5">
-            <div class="col-12 mt-2 table-responsive">
-                <table class="table table-hover table-light table-responsive table-striped table-bordered">
-                    <thead>
-                        <tr class=" table-primary">
-                            <th scope="col">ID</th>
-                            <th scope="col">Usuario</th>
-                            <th scope="col">Fecha de la cita</th>
-                            <th class=" text-center" scope="col">Estado de la cita</th>
-                            <th scope="col">Accion</th>
+        <div class="col-12 mt-2 table-responsive">
+            <table class="table table-hover table-light table-responsive table-striped table-bordered">
+                <thead>
+                    <tr class=" table-primary">
+                        <th scope="col">ID</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Fecha de la cita</th>
+                        <th class=" text-center" scope="col">Estado de la cita</th>
+                        <th scope="col">Accion</th>
 
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider ">
+                    @foreach ($citas as $item)
+                        <tr>
+                            <th scope="row">{{ $item->id }}</th>
+                            <td>{{ $item->Nombre }}</td>
+                            <td>{{ $item->fecha_cita }}</td>
+                            @if ($item->estado == 1)
+                                <td class="d-flex justify-content-center"><button
+                                        class="btn btn-success w-50">Activo</button></td>
+                            @else
+                                <td class="d-flex justify-content-center"><button
+                                        class="btn btn-danger w-50">Inactivo</button></td>
+                            @endif
+                            <th><button type="button" class="btn btn-primary">Editar</button>
+                            </th>
                         </tr>
-                    </thead>
-                    <tbody class="table-group-divider ">
-                        @foreach ($citas as $item)
-                            <tr>
-                                <th scope="row">{{ $item->id }}</th>
-                                <td>{{ $item->name }}</td>
-                                <td>{{ $item->fecha_cita }}</td>
-                                @if ($item->estado == 1)
-                                    <td class="d-flex justify-content-center"><button class="btn btn-success w-50">Activo</button></td>
-                                @else
-                                    <td class="d-flex justify-content-center"><button class="btn btn-danger w-50">Inactivo</button></td>
-                                @endif
-                                <th><button data-bs-toggle="modal" data-bs-target="#ModalEditar{{ $item->id }}"
-                                        type="button" class="btn btn-primary">Editar</button>
-                                </th>
-                            </tr>
-                            <!-- Button trigger modal -->
+                    @endforeach
 
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="ModalEditar{{ $item->id }}" tabindex="-1"
-                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header bg-dark">
-                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body bg-dark">
-                                            <div class="col-12 d-flex flex-column w-100">
-                                                <label for="" class="form-label text-bg-dark">ID</label>
-                                                <input type="text" class="w-100 form-check-input" name="Nombre"
-                                                    readonly value="{{ $item->id }}">
-                                            </div>
-
-                                            <div class="col-12 d-flex flex-column w-100">
-                                                <label for="" class="form-label text-bg-dark">Nombre del
-                                                    Cliente</label>
-                                                <input type="text" class="w-100 form-check-input" name="Nombre"
-                                                    readonly value="{{ $item->name }}">
-                                            </div>
-
-                                            <div class="col-12 d-flex flex-column w-100">
-                                                <label for="" class="form-label text-bg-dark">Fecha de la
-                                                    CIta</label>
-                                                <input type="text" class="w-100 form-check-input" name="Nombre"
-                                                    readonly value="{{ $item->fecha_cita }}">
-                                            </div>
-                                            <div class="col-12 d-flex flex-column">
-                                                <label for="" class=" form-label">Estado</label>
-                                                <select name="" id="">
-                                                    <option value="1">Activo</option>
-                                                    <option value="0">Inactivo</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer bg-dark">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-
-                    </tbody>
-                </table>
-            </div>
+                </tbody>
+            </table>
+        </div>
     </div>
 
 

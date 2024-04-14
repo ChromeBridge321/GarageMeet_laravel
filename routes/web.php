@@ -32,8 +32,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/talleres', [App\Http\Controllers\TalleresController::class, 'index'])->name('talleres');
 Route::get('/buscar-taller', [App\Http\Controllers\TalleresController::class, 'buscar'])->name('buscar_talleres');
-Route::get('/citas', [App\Http\Controllers\CitasController::class, 'administracion'])->name('citas');
-Route::get('/cita_web', [App\Http\Controllers\CitasController::class, 'web'])->name('citas.web');
+Route::get('/citas', [App\Http\Controllers\CitasController::class, 'index'])->name('citas');
 Route::get('/empleados', [App\Http\Controllers\EmpleadosController::class, 'index'])->name('empleados');
 Route::get('/clientes', [App\Http\Controllers\ClientesController::class, 'index'])->name('clientes');
 Route::get('/historial', [App\Http\Controllers\HistorialController::class, 'index'])->name('historial');
@@ -49,3 +48,6 @@ route::post('/actualizar_empleado', [App\Http\Controllers\EmpleadosController::c
 route::get('/eliminar_empleado-{id}', [App\Http\Controllers\EmpleadosController::class, 'delete'])->name('empleados.delete');
 route::get('/buscar_empleado', [App\Http\Controllers\EmpleadosController::class, 'search'])->name('buscar_e');
 route::get('search/talleres', [App\Http\Controllers\SearchController::class, 'search'])->name('buscar.taller');
+
+Route::get('/cita_web', [App\Http\Controllers\CitasController::class, 'web'])->name('citas.web');
+Route::post('/agendar/cita', [App\Http\Controllers\CitasController::class, 'agendar'])->name('citas.agendar');

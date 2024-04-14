@@ -35,7 +35,7 @@ class TalleresController extends Controller
         $talleres = DB::table('talleres_mecanicos as t')
             ->join('municipios as m', 'm.id', 't.municipios_id')
             ->join('estados as e', 'e.id', 'm.estados_id')
-            ->select('t.nombre', 't.telefono', 't.correo', 't.direccion', DB::raw("CONCAT(m.nombre, ' ', e.nombre) as ubicacion"))
+            ->select('t.id', 't.nombre', 't.telefono', 't.correo', 't.direccion', DB::raw("CONCAT(m.nombre, ' ', e.nombre) as ubicacion"))
             ->where(DB::raw("CONCAT(m.nombre, e.nombre)"), 'like', "%$request->nombre%")
             ->orwhere(DB::raw("CONCAT(m.nombre, ' ', e.nombre)"), 'like', "%$request->nombre%")
             ->get();
