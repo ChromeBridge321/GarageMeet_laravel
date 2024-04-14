@@ -26,7 +26,7 @@ class TalleresController extends Controller
      */
     public function index()
     {
-        $talleres = DB::table('talleres_mecanicos')->get();
+        $talleres = [];
         return view('talleres')->with('talleres', $talleres);
     }
 
@@ -35,9 +35,9 @@ class TalleresController extends Controller
         $talleres = DB::table('talleres_mecanicos as t')
             ->join('municipios as m', 'm.id', 't.municipios_id')
             ->join('estados as e', 'e.id', 'm.estados_id')
-            ->select('t.nombre', 't.telefono', 't.correo', 't.direccion')
-            ->where('e.nombre', 'like', "%$request->nombre%")
-            ->orWhere('m.nombre', 'like', "%$request->nombre%")
+            ->select('t.nombre', 't.telefono', 't.correo', 't.direccion', DB::raw("CONCAT(m.nombre, ' ', e.nombre) as ubicacion"))
+            ->where(DB::raw("CONCAT(m.nombre, e.nombre)"), 'like', "%$request->nombre%")
+            ->orwhere(DB::raw("CONCAT(m.nombre, ' ', e.nombre)"), 'like', "%$request->nombre%")
             ->get();
         return view('talleres')->with('talleres', $talleres);
     }
