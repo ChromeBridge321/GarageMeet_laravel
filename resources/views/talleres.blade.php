@@ -31,9 +31,9 @@
                     class=" col-12 col-sm-2 col-md-2 col-lg-1 d-flex align-items-center justify-content-center links d-none d-md-block">
                     @if (Route::has('login'))
                         @auth
-                            <a href="{{ url('/home') }}">Home</a>
+                            <a href="{{ url('/home') }}">Inicio</a>
                         @else
-                            <a href="{{ route('login') }}">Log in</a>
+                            <a href="{{ route('login') }}">Iniciar sesion</a>
 
 
                         @endauth
@@ -43,7 +43,7 @@
                 <div
                     class="col-12 col-sm-2 col-md-1 col-lg-1 d-flex align-items-center justify-content-center links d-none d-md-block">
                     <a href="{{ route('garegemet') }}">
-                        <img src="{{ asset('images/yasuo.jpg') }}" alt="" class=" avatar rounded-circle">
+                        <img src="{{ asset('images/yasuo.svg') }}" alt="" class=" avatar rounded-circle">
                     </a>
                 </div>
 
@@ -70,7 +70,7 @@
 
                     <div class="col-12 d-flex align-items-center justify-content-center links pb-5">
                         <a href="{{ route('garegemet') }}">
-                            <img src="{{ asset('images/yasuo.jpg') }}" alt="" class=" avatar rounded-circle">
+                            <img src="{{ asset('images/yasuo.svg') }}" alt="" class=" avatar rounded-circle">
                         </a>
                     </div>
                 </div>

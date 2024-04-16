@@ -19,11 +19,11 @@
     <div class="container-fluid">
         <div class="row" id="nav">
             <nav class="nav " id="nav">
-                <div class="col-6 col-sm-6 col-md-4 col-lg-6 logo col-xl-7">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-5 logo col-xl-6">
                     <h1>GarageMet</h1>
                 </div>
 
-                <div class=" col-6 col-sm-6 col-md-8 col-lg-6 col-xl-5 row">
+                <div class=" col-6 col-sm-6 col-md-8 col-lg-6 col-xl-6 row">
                     <div class="col-12 col-sm col-md links d-none d-md-block">
                         <a class="underline-hover d-flex align-items-center justify-content-center"
                             href="{{ route('talleres') }}">Talleres</a>
@@ -47,10 +47,10 @@
                         @if (Route::has('login'))
                             @auth
                                 <a href="{{ url('/home') }}"
-                                    class="d-flex align-items-center justify-content-center">Home</a>
+                                    class="d-flex align-items-center justify-content-center">Inicio</a>
                             @else
-                                <a href="{{ route('login') }}" class="d-flex align-items-center justify-content-center">Log
-                                    in</a>
+                                <a href="{{ route('login') }}"
+                                    class="d-flex align-items-center justify-content-center">Iniciar sesion</a>
 
 
                             @endauth
@@ -59,8 +59,8 @@
 
 
                     <div class="col-12 col-sm col-md links d-none d-md-block">
-                        <a href="{{ route('garegemet') }}" class="d-flex align-items-center justify-content-center">
-                            <img src="{{ asset('images/yasuo.jpg') }}" alt="" class=" avatar rounded-circle">
+                        <a href="{{ route('Perfil') }}" class="d-flex align-items-center justify-content-center">
+                            <img src="{{ asset('images/yasuo.svg') }}" alt="" class=" avatar rounded-circle">
                         </a>
                     </div>
 
@@ -100,8 +100,6 @@
                         <a href="{{ url('/home') }}">Home</a>
                     @else
                         <a href="{{ route('login') }}">Iniciar sesion</a>
-
-
                     @endauth
                 @endif
             </div>
@@ -109,7 +107,7 @@
 
             <div class="col-sm-12 d-flex align-items-center justify-content-center links pb-5">
                 <a href="{{ route('garegemet') }}">
-                    <img src="{{ asset('images/yasuo.jpg') }}" alt="" class=" avatar rounded-circle">
+                    <img src="{{ asset('images/yasuo.svg') }}" alt="" class=" avatar rounded-circle">
                 </a>
             </div>
         </div>
@@ -225,7 +223,7 @@
 
     </div>
 
-    <div class="row" id="Planes">
+    <div class="row d-none" id="Planes">
         <div class="col-12">
             <div class="row">
                 <div class="col d-flex justify-content-center">

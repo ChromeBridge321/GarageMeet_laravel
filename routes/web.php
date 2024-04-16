@@ -29,7 +29,12 @@ Route::get('/pagina-inicio', function () {
 Auth::routes();
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])
+    ->middleware('auth.admin')
+    ->name('home');
+
+Route::get('/perfil', [App\Http\Controllers\HomeController::class, 'perfil'])->name('Perfil');
+
 Route::get('/talleres', [App\Http\Controllers\TalleresController::class, 'index'])->name('talleres');
 Route::get('/buscar-taller', [App\Http\Controllers\TalleresController::class, 'buscar'])->name('buscar_talleres');
 Route::get('/citas', [App\Http\Controllers\CitasController::class, 'index'])->name('citas');
@@ -54,3 +59,5 @@ Route::get('/buscar-cita', [App\Http\Controllers\CitasController::class, 'search
 Route::post('/agendar/cita', [App\Http\Controllers\CitasController::class, 'agendar'])->name('citas.agendar');
 Route::post('/citas/agendar-cita', [App\Http\Controllers\CitasController::class, 'store'])->name('agendar.cita');
 Route::post('/citas/actualizar-cita', [App\Http\Controllers\CitasController::class, 'update'])->name('actualizar.cita');
+Route::get('/form-register-taller', [App\Http\Controllers\TalleresController::class, 'indexCreate'])->name('talleres.index-create');
+Route::post('/taller-success-create', [App\Http\Controllers\TalleresController::class, 'create'])->name('talleres.create');

@@ -75,7 +75,7 @@
             <a href="{{ route('historial') }}">
                 <div class="option">
                     <i><img src="{{ asset('images/historial.svg') }}" alt=""></i>
-                    <h4>Historial</h4>
+                    <h4>Venta</h4>
                 </div>
             </a>
 
@@ -83,7 +83,7 @@
             <div class=" perfil h-100 d-flex justify-content-center align-items-end ">
                 <div class="col-3 me-1">
                     <a href="{{ route('garegemet') }}">
-                        <img src="{{ asset('images/yasuo.jpg') }}" alt="" class=" avatar rounded-circle">
+                        <img src="{{ asset('images/yasuo.svg') }}" alt="" class=" avatar rounded-circle">
                     </a>
                 </div>
 

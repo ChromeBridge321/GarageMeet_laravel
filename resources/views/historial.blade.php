@@ -75,7 +75,7 @@
             <a href="{{ route('historial') }}" class="selected">
                 <div class="option">
                     <i><img src="{{ asset('images/historial_on.svg') }}" alt=""></i>
-                    <h4>Historial</h4>
+                    <h4>Venta</h4>
                 </div>
             </a>
 

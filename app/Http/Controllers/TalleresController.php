@@ -43,4 +43,31 @@ class TalleresController extends Controller
             ->get();
         return view('talleres')->with('talleres', $talleres)->with('usuario', $usuario);
     }
+
+    public function create(Request $request)
+    {
+        $usuario = auth()->user();
+        $sql = DB::insert('insert into talleres_mecanicos (id, nombre, correo, direccion, municipios_id, users_id, telefono) 
+        values (?, ?, ?, ?, ?, ?, ?)', [
+            null,
+            "$request->nombre",
+            $request->correo,
+            $request->direccion,
+            1,
+            $usuario->id,
+            $request->telefono,
+
+        ]);
+
+        $sql2 = DB::update('update users set rol = 1 where id = ?', [$usuario->id]);
+
+        return view('home')->with('usuario', $usuario);
+    }
+
+
+    public function indexCreate()
+    {
+        $user = auth()->user();
+        return view('auth.register_taller')->with('user', $user);
+    }
 }

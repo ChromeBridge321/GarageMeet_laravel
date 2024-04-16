@@ -23,6 +23,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $usuario = auth()->user();
+        return view('home')->with('usuario', $usuario);
+    }
+
+    public function perfil()
+    {
+        $user = auth()->user();
+        return view('perfil')->with('user', $user);
     }
 }
