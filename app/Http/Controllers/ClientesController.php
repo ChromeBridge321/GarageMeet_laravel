@@ -57,39 +57,39 @@ class ClientesController extends Controller
             $taller = $value->id;
         };
 
-        // try {
-        $sql = DB::insert("insert into personas (nombre,telefono,correo,direccion,id,taller_id) values (?,?,?,?,?,?) ", [
-            $request->Nombre,
-            $request->Telefono,
-            $request->Correo,
-            $request->Direccion,
-            null,
-            $taller,
+        try {
+            $sql = DB::insert("insert into personas (nombre,telefono,correo,direccion,id,taller_id) values (?,?,?,?,?,?) ", [
+                $request->Nombre,
+                $request->Telefono,
+                $request->Correo,
+                $request->Direccion,
+                null,
+                $taller,
 
-        ]);
+            ]);
 
-        $find_2 = DB::table('users')
-            ->join('talleres_mecanicos', 'talleres_mecanicos.users_id', '=', 'users.id')
-            ->join('personas', 'personas.taller_id', '=', 'talleres_mecanicos.id')
-            ->select('personas.id')
-            ->where('users.email', '=', $correo)
-            ->orderByDesc('id')
-            ->limit('1')
-            ->get();
+            $find_2 = DB::table('users')
+                ->join('talleres_mecanicos', 'talleres_mecanicos.users_id', '=', 'users.id')
+                ->join('personas', 'personas.taller_id', '=', 'talleres_mecanicos.id')
+                ->select('personas.id')
+                ->where('users.email', '=', $correo)
+                ->orderByDesc('id')
+                ->limit('1')
+                ->get();
 
-        foreach ($find_2 as $key => $value) {
-            $primer_id = $value->id;
-        };
+            foreach ($find_2 as $key => $value) {
+                $primer_id = $value->id;
+            };
 
-        $sql2 = DB::insert("insert into clientes (id,personas_id,Fecha_registro) values (?,?,?) ", [
-            $primer_id,
-            $primer_id,
-            $fechaActual
-        ]);
-        // } catch (\Throwable $th) {
-        //     $sql = 0;
-        //     $sql2 = 0;
-        // }
+            $sql2 = DB::insert("insert into clientes (id,personas_id,Fecha_registro) values (?,?,?) ", [
+                $primer_id,
+                $primer_id,
+                $fechaActual
+            ]);
+        } catch (\Throwable $th) {
+            $sql = 0;
+            $sql2 = 0;
+        }
         if ($sql == true and $sql2 == true) {
             return back()->with('correcto', 'persona creo correctamente');
         } else {
@@ -148,13 +148,13 @@ class ClientesController extends Controller
 
         $correo = (auth()->user()->email);
 
-        $personas = DB::table('users')
-            ->join('talleres_mecanicos', 'talleres_mecanicos.users_id', '=', 'users.id')
-            ->join('clientes', 'clientes.talleres_mecanicos_id', '=', 'talleres_mecanicos.id')
-            ->join('personas', 'personas.id', '=', 'clientes.personas_id')
-            ->select('personas.id', 'personas.nombre', 'personas.telefono', 'personas.correo', 'personas.direccion')
-            ->where('users.email', '=', $correo)
-            ->where('personas.nombre', 'like', "%$request->nombre%")
+        $personas = DB::table('users as u')
+            ->join('talleres_mecanicos as t', 't.users_id', '=', 'u.id')
+            ->join('personas as p', 'p.taller_id', '=', 't.id')
+            ->join('clientes as c', 'c.personas_id', '=', 'p.id')
+            ->select('p.*')
+            ->where('u.email', '=', $correo)
+            ->where('p.nombre', 'like', "%$request->nombre%")
             ->paginate(10);
 
         return view('clientes')->with("personas", $personas);

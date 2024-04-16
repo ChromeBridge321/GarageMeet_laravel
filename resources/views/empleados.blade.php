@@ -42,7 +42,7 @@
             <h4 class="m-0">GarageMet</h4>
         </div>
 
-        <div class="options__menu  h-100">
+        <div class="options__menu">
 
             <a href="{{ route('home') }}">
                 <div class="option">
@@ -82,7 +82,7 @@
 
             <div class=" perfil h-100 d-flex justify-content-center align-items-end ">
                 <div class="col-3 me-1">
-                    <a href="{{ route('garegemet') }}">
+                    <a href="{{ route('Perfil') }}">
                         <img src="{{ asset('images/yasuo.svg') }}" alt="" class=" avatar rounded-circle">
                     </a>
                 </div>
@@ -111,13 +111,13 @@
         <div class="pt-3 mt-3">
             @if (session('correcto'))
                 <div class="alert bg-success text-white " role="alert">
-                    Datos guardados correctamente
+                    {{ session('correcto') }}
                 </div>
             @endif
 
             @if (session('incorrecto'))
                 <div class="alert bg-danger text-white " role="alert">
-                    Los datos no se han podido guardar
+                    {{ session('incorrecto') }}
                 </div>
             @endif
 
@@ -156,32 +156,66 @@
 
         </div>
 
-        <div class="col-12 d-flex justify-content-around pt-3 pe-3 alert alert-light align-items-center pb-3">
-            <form action="{{ route('buscar_e') }}" method="GET" class="d-flex justify-content-between col-8">
+        <div class="row d-flex justify-content-around pt-3 pe-0 alert alert-light align-items-center pb-3">
+            <form action="{{ route('buscar_e') }}" method="GET" class="row">
                 @csrf
-                <div action="" class="search w-75 me-3">
+                <div action="" class="search  col-8 col-lg-6 col-xl-8">
                     <img src="{{ asset('Images/buscar.svg') }}">
-                    <input type="text" placeholder="Buscar empleado" name="nombre">
+                    <input type="text" placeholder="Buscar empleado" id="search" name="nombre">
                 </div>
-                <div>
-                    <button type="submit" class="btn btn-secondary ">
+                <div class="col-4 col-lg-2 pt-2 d-flex justify-content-center col-xl">
+                    <button type="submit" class="btn btn-secondary">
                         Buscar
                     </button>
                 </div>
-                <div>
+                <div class="col-6 col-lg-2 pt-2 d-flex justify-content-center col-xl">
                     <a type="submit" class="btn btn-warning " href="{{ route('empleados') }}">
                         Mostrar todo
                     </a>
                 </div>
+                <div class="d-flex justify-content-center col-6 col-lg-2 pt-2  col-xl">
+                    <button data-bs-toggle="modal" data-bs-target="#ModalAnadir" type="button"
+                        class=" btn btn-primary">
+                        Añadir empleado
+                    </button>
+                </div>
+                <div class="d-flex justify-content-center col-6 col-lg-2 pt-2  col-xl">
+                    <button data-bs-toggle="modal" data-bs-target="#ModalAnadir2" type="button"
+                        class=" btn btn-primary">
+                        Añadir cargo
+                    </button>
+                </div>
             </form>
 
-            <div class="d-flex justify-content-end col-4">
-                <button data-bs-toggle="modal" data-bs-target="#ModalAnadir" type="button"
-                    class=" btn btn-primary">
-                    Añadir empleado
-                </button>
-            </div>
 
+
+        </div>
+
+        <!-- Modal para anadir -->
+        <div class="modal fade h-100" id="ModalAnadir2" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header ">
+                        <h1 class="modal-title fs-5 text-black" id="exampleModalLabel">Añadir nuevo cargo</h1>
+                        <button type="button" class=" bg-white btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body ">
+                        <form action="{{ route('empleado.cargo') }}" method="get">
+                            @csrf
+                            <label for="">Nombre</label>
+                            <input type="text" name="nombre" id="" class=" form-control">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-primary">Añadir</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
         </div>
 
         <!-- Modal para anadir -->
@@ -359,6 +393,64 @@
             <div class=" d-flex justify-content-end altura">
                 {!! $personas->links() !!}
             </div>
+        </div>
+
+        <div class="col-12 mt-2 table-responsive">
+            <table class="table table-hover table-light table-responsive table-striped table-bordered">
+                <thead>
+                    <tr class=" table-primary">
+                        <th scope="col" class=" text-center">No.</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Accion</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    <?php $i = 1; ?>
+                    @foreach ($tipos_cargos as $item)
+                        <tr>
+                            <th scope="row" class=" text-center">{{ $i }}</th>
+                            <td>{{ $item->nombre }}</td>
+                            <th class=" d-flex justify-content-center"><button data-bs-toggle="modal"
+                                    data-bs-target="#ModalEditar{{ $item->id }}" type="button"
+                                    class="btn btn-primary">Editar</button>
+                                <a type="button" class="btn btn-danger ms-4 ps-4" onclick="return res()"
+                                    href="{{ route('cargo.delete', $item->id) }}">Eliminar</a>
+                                <!-- Modal -->
+                                <div class="modal fade" id="ModalEditar{{ $item->id }}" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="{{ route('update.cargo') }}" method="get">
+                                                    <label for="">Nombre</label>
+                                                    <input type="text" name="id" id=""
+                                                        class=" form-control d-none" value="{{ $item->id }}">
+                                                    <input type="text" name="nombre" id=""
+                                                        class=" form-control" value="{{ $item->nombre }}">
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit"
+                                                            class="btn btn-primary">Guardar</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </th>
+                        </tr>
+                        <?php $i++; ?>
+                    @endforeach
+
+                </tbody>
+            </table>
         </div>
     </div>
 

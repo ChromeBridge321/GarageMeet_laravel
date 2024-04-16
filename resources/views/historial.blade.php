@@ -17,8 +17,16 @@
 
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
 </head>
+<script>
+    var res = function() {
 
-<body id="body">
+        var not = confirm("estas seguro que quieres eliminar el registro?");
+        return not;
+
+    }
+</script>
+
+<body id="body" class=" bg-body-tertiary">
     <header>
         <div class="icon__menu">
             <i id="btn_open"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="#ffffff"
@@ -78,29 +86,152 @@
                     <h4>Venta</h4>
                 </div>
             </a>
-
-            <a class="dropdown-item" href="{{ route('logout') }}"
-                onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                {{ __('Logout') }}
+            <a href="{{ route('Perfil') }}" class="">
+                <div class=" d-flex  align-items-center">
+                    <i class=" pe-2"><img src="{{ asset('images/yasuo.svg') }}" alt=""
+                            class=" avatar rounded-circle"></i>
+                    <h4>Perfil</h4>
+                </div>
             </a>
-
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                @csrf
-            </form>
-
-
-            <a href="{{ route('garegemet') }}">
-                home
-            </a>
-
 
         </div>
 
     </div>
 
+    <div class=" container-fluid ps-2 ps-md-4 pe-2 pe-md-4 ps-lg-5 pe-lg-5">
+        <div class="row d-flex justify-content-center">
+            <form action="{{ route('servicio.create') }}" method="get" class=" col-12 row bg-white rounded-4">
+                <div class="col-12 d-flex justify-content-center pt-4 ">
+                    <h2 class="fw-bold">FORMULARIO DE SERVICIOS</h2>
+                </div>
+                <div class=" col-12 col-xl-6">
+                    <label for="" class="form-label">Cliente</label>
+                    <input type="text" class="form-control" name="Nombre">
+                </div>
+                <div class=" col-12 col-xl-6">
+                    <label for="" class="form-label">Vehiculo</label>
+                    <input type="text" class="form-control" name="Vehiculo">
+                </div>
+                <div class=" col-12 col-xl-6">
+                    <label for="" class="form-label">Placas</label>
+                    <input type="text" class="form-control" name="Placas">
+                </div>
+                <div class=" col-12 col-xl-6">
+                    <label for="" class="form-label">Fecha</label>
+                    <input type="date" class="form-control" name="Fecha">
+                </div>
+                <div>
+                    <label for="" class="form-label">Servicios</label>
+                    <textarea name="Servicios" rows="3" class=" form-control"></textarea>
+                </div>
+                <div class=" d-flex justify-content-end pt-4 pb-4">
+                    <button class=" btn btn-primary pe-5 ps-5 fs-6" type="submit">Crear</button>
+                </div>
+            </form>
+        </div>
+        @if (session('true'))
+            <div class="bg-success text-center alert text-white" role="alert">
+                {{ session('true') }}
+            </div>
+        @endif
 
+        @if (session('false'))
+            <div class="bg-danger text-center alert text-white" role="alert">
+                {{ session('false') }}
+            </div>
+        @endif
+        <div class="row d-flex justify-content-center pt-5 mt-3 table-responsive">
+            <div class="col-10 bg-white pt-4 rounded-4">
+                <table class="table table-hover table-responsive table-bordered ">
+                    <thead class=" table-primary">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Cliente</th>
+                            <th scope="col">Vehiculo</th>
+                            <th scope="col">Placas</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Servicios</th>
+                            <th scope="col">Accion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($servicio as $item)
+                            <tr>
+                                <th>{{ $item->id }}</th>
+                                <td>{{ $item->nombre }}</td>
+                                <td>{{ $item->vehiculo }}</td>
+                                <td>{{ $item->Placas }}</td>
+                                <td>{{ $item->fecha_servicio }}</td>
+                                <td>{{ $item->Servicios }}</td>
+                                <th class=" d-flex justify-content-around"><button type="button"
+                                        class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal-{{ $item->id }}">Editar</button>
+                                    <a type="button" class="btn btn-danger" onclick="return res()"
+                                        href="{{ route('servicio.delete', $item->id) }}">Eliminar</a>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal-{{ $item->id }}" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog fw-normal modal-xl modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Servicios</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="{{ route('servicio.update', $item->id) }}"
+                                                        method="post" class="row">
+                                                        @csrf
+                                                        <input type="text" name="" id=""
+                                                            class=" d-none" value="{{ $item->id }}"
+                                                            name="id">
+                                                        <div class=" col-12 col-lg-6">
+                                                            <label for="" class="form-label">Cliente</label>
+                                                            <input type="text" class="form-control" name="Nombre"
+                                                                value="{{ $item->nombre }}">
+                                                        </div>
+                                                        <div class=" col-12 col-lg-6">
+                                                            <label for="" class="form-label">Vehiculo</label>
+                                                            <input type="text" class="form-control"
+                                                                name="Vehiculo" value="{{ $item->vehiculo }}">
+                                                        </div>
+                                                        <div class=" col-12 col-lg-6">
+                                                            <label for="" class="form-label">Placas</label>
+                                                            <input type="text" class="form-control" name="Placas"
+                                                                value="{{ $item->Placas }}">
+                                                        </div>
+                                                        <div class=" col-12 col-lg-6">
+                                                            <label for="" class="form-label">Fecha</label>
+                                                            <input type="date" class="form-control" name="Fecha"
+                                                                value="{{ $item->fecha_servicio }}">
+                                                        </div>
+                                                        <div>
+                                                            <label for="" class="form-label">Servicios</label>
+                                                            <textarea name="Servicios" rows="3" class=" form-control">{{ $item->Servicios }}</textarea>
+                                                        </div>
+                                                        <div class="modal-footer mt-4">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">Cerrar</button>
+                                                            <button type="submit"
+                                                                class="btn btn-primary">Guardar</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+
+                                                </form>
+                                </th>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                <div class=" d-flex justify-content-end altura">
+                    {!! $servicio->links() !!}
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="{{ asset('CSS/Bootstrap/js/script.js') }}"></script>
+    <script src="{{ asset('CSS/Bootstrap/js/bootstrap.min.js') }}"></script>
 </body>
 
 </html>

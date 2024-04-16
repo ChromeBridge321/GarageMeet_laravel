@@ -61,3 +61,9 @@ Route::post('/citas/agendar-cita', [App\Http\Controllers\CitasController::class,
 Route::post('/citas/actualizar-cita', [App\Http\Controllers\CitasController::class, 'update'])->name('actualizar.cita');
 Route::get('/form-register-taller', [App\Http\Controllers\TalleresController::class, 'indexCreate'])->name('talleres.index-create');
 Route::post('/taller-success-create', [App\Http\Controllers\TalleresController::class, 'create'])->name('talleres.create');
+Route::get('/servicio-create', [App\Http\Controllers\HistorialController::class, 'store'])->name('servicio.create');
+Route::get('/servicio-delete-{id}', [App\Http\Controllers\HistorialController::class, 'delete'])->name('servicio.delete');
+Route::post('/servicio-update', [App\Http\Controllers\HistorialController::class, 'update'])->name('servicio.update');
+Route::get('/cargo-insert', [App\Http\Controllers\EmpleadosController::class, 'acargo'])->name('empleado.cargo');
+Route::get('/cargoupdate', [App\Http\Controllers\EmpleadosController::class, 'ucargo'])->name('update.cargo');
+Route::get('/cargo-delete-{id}', [App\Http\Controllers\EmpleadosController::class, 'cargodelete'])->name('cargo.delete');

@@ -106,7 +106,7 @@
 
 
             <div class="col-sm-12 d-flex align-items-center justify-content-center links pb-5">
-                <a href="{{ route('garegemet') }}">
+                <a href="{{ route('Perfil') }}">
                     <img src="{{ asset('images/yasuo.svg') }}" alt="" class=" avatar rounded-circle">
                 </a>
             </div>

@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('servicios', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre',60);
+            $table->string('cliente', 60);
+            $table->string('vehiculo', 60);
+            $table->date('fecha_sercivio');
+            $table->text('servicios');
             $table->unsignedBigInteger('talleres_mecanicos_id');
             $table->foreign('talleres_mecanicos_id')->references('id')->on('talleres_mecanicos');
             $table->timestamps();
