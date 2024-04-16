@@ -50,4 +50,7 @@ route::get('/buscar_empleado', [App\Http\Controllers\EmpleadosController::class,
 route::get('search/talleres', [App\Http\Controllers\SearchController::class, 'search'])->name('buscar.taller');
 
 Route::get('/cita_web', [App\Http\Controllers\CitasController::class, 'web'])->name('citas.web');
+Route::get('/buscar-cita', [App\Http\Controllers\CitasController::class, 'search'])->name('citas.buscar');
 Route::post('/agendar/cita', [App\Http\Controllers\CitasController::class, 'agendar'])->name('citas.agendar');
+Route::post('/citas/agendar-cita', [App\Http\Controllers\CitasController::class, 'store'])->name('agendar.cita');
+Route::post('/citas/actualizar-cita', [App\Http\Controllers\CitasController::class, 'update'])->name('actualizar.cita');

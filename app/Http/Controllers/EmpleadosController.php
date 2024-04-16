@@ -54,15 +54,15 @@ class EmpleadosController extends Controller
         $correo = (auth()->user()->email);
 
         $find = DB::table('users')
-        ->join('talleres_mecanicos', 'talleres_mecanicos.users_id', '=', 'users.id')
-        ->select('talleres_mecanicos.id')
-        ->where('users.email', '=', $correo)
-        ->get();
+            ->join('talleres_mecanicos', 'talleres_mecanicos.users_id', '=', 'users.id')
+            ->select('talleres_mecanicos.id')
+            ->where('users.email', '=', $correo)
+            ->get();
 
 
-    foreach ($find as $key => $value) {
-        $taller = $value->id;
-    };
+        foreach ($find as $key => $value) {
+            $taller = $value->id;
+        };
 
 
         try {
@@ -71,35 +71,33 @@ class EmpleadosController extends Controller
                 $request->Telefono,
                 $request->Correo,
                 $request->Direccion,
-                $request->ID,
+                null,
                 $taller,
 
             ]);
 
             $find_2 = DB::table('users')
-            ->join('talleres_mecanicos', 'talleres_mecanicos.users_id', '=', 'users.id')
-            ->join('personas', 'personas.taller_id', '=', 'talleres_mecanicos.id')
-            ->select('personas.id')
-            ->where('users.email', '=', $correo)
-            ->orderByDesc('id')
-            ->limit('1')
-            ->get();
+                ->join('talleres_mecanicos', 'talleres_mecanicos.users_id', '=', 'users.id')
+                ->join('personas', 'personas.taller_id', '=', 'talleres_mecanicos.id')
+                ->select('personas.id')
+                ->where('users.email', '=', $correo)
+                ->orderByDesc('id')
+                ->limit('1')
+                ->get();
 
-        foreach ($find_2 as $key => $value) {
-            $primer_id = $value->id;
-        };
-
-
+            foreach ($find_2 as $key => $value) {
+                $primer_id = $value->id;
+            };
 
 
 
-                $sql2 = DB::insert("insert into empleados (id,personas_id,talleres_mecanicos_id,tipos_cargos_id) values (?,?,?,?) ", [
-                    $primer_id,
-                    $primer_id,
-                    $taller,
-                    $request->Puesto,
-                ]);
-            
+
+
+            $sql2 = DB::insert("insert into empleados (id,personas_id,tipos_cargos_id) values (?,?,?) ", [
+                $primer_id,
+                $primer_id,
+                $request->Puesto,
+            ]);
         } catch (\Throwable $th) {
             $sql = 0;
             $sql2 = 0;
@@ -164,28 +162,29 @@ class EmpleadosController extends Controller
         }
     }
 
-    public function search(Request $request){
+    public function search(Request $request)
+    {
 
         $correo = (auth()->user()->email);
 
         $tipos_cargos = DB::table('users')
-        ->join('talleres_mecanicos', 'talleres_mecanicos.users_id', '=', 'users.id')
-        ->join('tipos_cargos', 'tipos_cargos.taller_id', '=', 'talleres_mecanicos.id')
-        ->select('tipos_cargos.id', 'tipos_cargos.nombre')
-        ->where('users.email', '=', $correo)
-        ->get();
+            ->join('talleres_mecanicos', 'talleres_mecanicos.users_id', '=', 'users.id')
+            ->join('tipos_cargos', 'tipos_cargos.taller_id', '=', 'talleres_mecanicos.id')
+            ->select('tipos_cargos.id', 'tipos_cargos.nombre')
+            ->where('users.email', '=', $correo)
+            ->get();
 
 
         $personas = DB::table('users')
-        ->join('talleres_mecanicos', 'talleres_mecanicos.users_id', '=', 'users.id')
-        ->join('personas', 'personas.taller_id', '=', 'talleres_mecanicos.id')
-        ->join('empleados', 'empleados.personas_id', '=', 'personas.id')
-        ->join('tipos_cargos', 'tipos_cargos.id', '=', 'empleados.tipos_cargos_id')
-        ->select('personas.id', 'personas.nombre', 'personas.telefono', 'personas.correo', 'personas.direccion', 'tipos_cargos.nombre as tipo_cargo')
-        ->where('users.email', '=', $correo)
+            ->join('talleres_mecanicos', 'talleres_mecanicos.users_id', '=', 'users.id')
+            ->join('personas', 'personas.taller_id', '=', 'talleres_mecanicos.id')
+            ->join('empleados', 'empleados.personas_id', '=', 'personas.id')
+            ->join('tipos_cargos', 'tipos_cargos.id', '=', 'empleados.tipos_cargos_id')
+            ->select('personas.id', 'personas.nombre', 'personas.telefono', 'personas.correo', 'personas.direccion', 'tipos_cargos.nombre as tipo_cargo')
+            ->where('users.email', '=', $correo)
             ->where('personas.nombre', 'like', "%$request->nombre%")
             ->paginate(10);
 
-            return view('empleados')->with('tipos_cargos', $tipos_cargos)->with("personas", $personas);
+        return view('empleados')->with('tipos_cargos', $tipos_cargos)->with("personas", $personas);
     }
 }

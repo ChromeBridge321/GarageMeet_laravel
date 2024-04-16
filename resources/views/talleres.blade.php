@@ -18,19 +18,6 @@
 </head>
 
 
-<style>
-    html {
-        font-family: 'Poppins', sans-serif;
-        font-size: 62.5%;
-    }
-
-    body {
-        font-size: 16px;
-        font-family: 'Poppins', sans-serif;
-        background-color: #1B1B1B;
-    }
-</style>
-
 <body>
     <div class="container-fluid">
         <div class="row w-100" id="nav">
@@ -130,14 +117,26 @@
         </div>
 
         @if (session('true'))
-            <div class=" row text-bg-success" style="height: 10rem;">
-                <h2 class=" d-flex justify-content-center align-items-center">{{ session('true') }}</h2>
+            <div class=" row text-bg-success" style="height: 13rem;">
+                <div class=" col-12 d-flex justify-content-center align-items-end">
+                    <i><img src="{{ asset('Images/calendar-check-fill.svg') }}" alt=""></i>
+                </div>
+                <div class=" col-12">
+                    <h2 class="d-flex justify-content-center align-items-center text-center">{{ session('true') }}
+                    </h2>
+                </div>
             </div>
         @endif
 
         @if (session('fail'))
-            <div class=" row text-bg-danger" style="height: 10rem;">
-                <h2 class=" d-flex justify-content-center align-items-center">{{ session('fail') }}</h2>
+            <div class=" row text-bg-danger" style="height: 13rem;">
+                <div class=" col-12 d-flex justify-content-center align-items-end">
+                    <i><img src="{{ asset('Images/warning-fill.svg') }}" alt=""></i>
+                </div>
+                <div class=" col-12">
+                    <h2 class="d-flex justify-content-center align-items-center text-center">{{ session('fail') }}
+                    </h2>
+                </div>
             </div>
         @endif
 
@@ -167,16 +166,6 @@
                                     data-bs-toggle="modal" data-bs-target="#exampleModal-{{ $item->id }}">Agendar
                                     cita</button>
 
-
-                                {{-- 
-                                <form action="{{ route('citas.web') }}" method="get"
-                                    id="publicar-{{ $item->id }}">
-                                    @csrf
-                                    <input class="d-none" type="number" name="id"
-                                        value="{{ $item->id }}">
-                                    <input class="d-none" type="text" name="nombre"
-                                        value="{{ $item->nombre }}">
-                                </form> --}}
                             </div>
                         </div>
                     </div>
@@ -207,7 +196,7 @@
 
                                             <div class=" col-6 d-flex flex-column">
                                                 <label class=" form-label fs-2" for="correo">Correo</label>
-                                                <input class=" form-control fs-2" type="text" name="correo"
+                                                <input class=" form-control fs-2" type="email" name="correo"
                                                     id="" value="{{ $usuario->email }}">
                                             </div>
 
@@ -218,7 +207,7 @@
                                             </div>
                                             <div class=" col-6">
                                                 <label class=" form-label fs-2" for="fecha">Fecha</label>
-                                                <input class=" form-control fs-2" type="text" name="fecha"
+                                                <input class=" form-control fs-2" type="date" name="Fecha"
                                                     id="">
                                             </div>
 

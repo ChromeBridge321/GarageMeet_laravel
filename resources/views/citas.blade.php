@@ -100,7 +100,112 @@
 
     </div>
 
+
+
     <div class=" container-fluid p-5">
+
+        @if (session('true'))
+            <div class=" alert text-bg-success">
+                {{ session('true') }}
+            </div>
+        @endif
+        @if (session('false'))
+            <div class=" alert text-bg-danger">
+                {{ session('false') }}
+            </div>
+        @endif
+
+        <div class="col-12 d-flex justify-content-around pt-3 pe-3 alert alert-light align-items-center pb-3">
+            <form action="{{ route('citas.buscar') }}" method="GET" class="d-flex justify-content-between w-100">
+                @csrf
+                <div action="" class="search me-3 col-4">
+                    <img src="{{ asset('Images/buscar.svg') }}">
+                    <input type="text" placeholder="Buscar cliente" id="search" name="nombre">
+                </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-secondary ms-2">
+                        Buscar
+                    </button>
+                    <a type="submit" class="btn btn-warning ms-2" href="{{ route('citas') }}">
+                        Mostrar todo
+                    </a>
+                    <button type="button" class="btn btn-primary ms-2" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">
+                        Nueva cita
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog fw-normal modal-xl modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Nueva cita</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ route('agendar.cita') }}" method="post" class="row">
+                            @csrf
+                            <div class=" col-6">
+                                <label for="" class=" form-label">Nombre</label>
+                                <input type="text" class=" form-control" name="Nombre">
+                            </div>
+
+                            <div class=" col-6">
+                                <label for="" class=" form-label">Correo</label>
+                                <input type="email" class=" form-control" name="Correo">
+                            </div>
+
+                            <div class=" col-6">
+                                <label for="" class=" form-label">Telefono</label>
+                                <input type="number" class=" form-control" name="Telefono">
+                            </div>
+
+                            <div class=" col-6">
+                                <label for="" class=" form-label">Fecha</label>
+                                <input type="date" class=" form-control" name="Fecha">
+                            </div>
+
+                            <div class=" col-6">
+                                <label for="" class=" form-label">Vehiculo</label>
+                                <input type="text" class=" form-control" name="Vehiculo">
+                            </div>
+
+                            <div class=" col-6">
+                                <label for="" class=" form-label">Placas</label>
+                                <input type="text" class=" form-control" name="Placas">
+                            </div>
+
+                            <div>
+                                <label for="" class=" form-label">Observaciones</label>
+                                <textarea class="form-control" rows="3" value="" name="Observaciones"></textarea>
+                            </div>
+
+                            <div class=" col-6">
+                                <label for="estado" class=" form-label ">Nuevo
+                                    estado</label>
+                                <select name="estado" id="" class=" form-select">
+                                    <option value=""></option>
+                                    <option value="1">Activa</option>
+                                    <option value="0">Inactiva</option>
+                                </select>
+                            </div>
+                            <div class="modal-footer mt-4">
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-primary">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
         <div class="col-12 mt-2 table-responsive">
             <table class="table table-light table-responsive table-striped table-bordered">
                 <thead>
@@ -134,13 +239,108 @@
                             @endif
                             <td>{{ $item->fecha_cita }}</td>
                             <td>{{ $item->observaciones }}</td>
-                            <th><button type="button" class="btn btn-primary">Editar</button>
+                            <th><button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal-{{ $item->id }}">Editar</button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal-{{ $item->id }}" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog fw-normal modal-xl modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Citas</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="{{ route('actualizar.cita') }}" method="post"
+                                                    class="row">
+                                                    @csrf
+                                                    <input type="text" name="ID" value="{{ $item->id }}"
+                                                        class=" d-none">
+                                                    <div class=" col-6">
+                                                        <label for="" class=" form-label">Nombre</label>
+                                                        <input type="text" class=" form-control"
+                                                            value="{{ $item->Nombre }}" name="Nombre">
+                                                    </div>
+
+                                                    <div class=" col-6">
+                                                        <label for="" class=" form-label">Correo</label>
+                                                        <input type="text" class=" form-control"
+                                                            value="{{ $item->Correo }}" name="Correo">
+                                                    </div>
+
+                                                    <div class=" col-6">
+                                                        <label for="" class=" form-label">Telefono</label>
+                                                        <input type="text" class=" form-control"
+                                                            value="{{ $item->Telefono }}" name="Telefono">
+                                                    </div>
+
+                                                    <div class=" col-6">
+                                                        <label for="" class=" form-label">Fecha</label>
+                                                        <input type="date" class=" form-control"
+                                                            value="{{ $item->fecha_cita }}" name="Fecha">
+                                                    </div>
+
+                                                    <div class=" col-6">
+                                                        <label for="" class=" form-label">Vehiculo</label>
+                                                        <input type="text" class=" form-control"
+                                                            value="{{ $item->Vehiculo }}" name="Vehiculo">
+                                                    </div>
+
+                                                    <div class=" col-6">
+                                                        <label for="" class=" form-label">Placas</label>
+                                                        <input type="text" class=" form-control"
+                                                            value="{{ $item->Placas }}" name="Placas">
+                                                    </div>
+
+                                                    <div>
+                                                        <label for="Observaciones"
+                                                            class=" form-label">Observaciones</label>
+                                                        <textarea class="form-control" rows="3" value="" name="Observaciones">{{ $item->observaciones }}</textarea>
+                                                    </div>
+
+                                                    <div class=" col-6">
+                                                        <label for="" class=" form-label ">Estado
+                                                            actual</label>
+                                                        <select name="estado" id="" class=" form-select">
+                                                            @if ($item->estado == 1)
+                                                                <option value="">Activa</option>
+                                                            @endif
+                                                            @if ($item->estado == 0)
+                                                                <option value="">Inactiva</option>
+                                                            @endif
+                                                        </select>
+                                                    </div>
+                                                    <div class=" col-6">
+                                                        <label for="estado" class=" form-label ">Nuevo
+                                                            estado</label>
+                                                        <select name="estado" id="" class=" form-select">
+                                                            <option value="{{ $item->estado }}"></option>
+                                                            <option value="1">Activa</option>
+                                                            <option value="0">Inactiva</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="modal-footer mt-4">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Cerrar</button>
+                                                        <button type="submit"
+                                                            class="btn btn-primary">Guardar</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
                             </th>
                         </tr>
                     @endforeach
 
                 </tbody>
             </table>
+            <div class=" d-flex justify-content-end altura">
+                {!! $citas->links() !!}
+            </div>
         </div>
     </div>
 

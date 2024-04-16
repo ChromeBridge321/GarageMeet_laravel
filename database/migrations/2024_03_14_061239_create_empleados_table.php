@@ -15,10 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('personas_id');
             $table->unsignedBigInteger('tipos_cargos_id');
-            $table->unsignedBigInteger('talleres_mecanicos_id');
             $table->foreign('personas_id')->references('id')->on('personas');
             $table->foreign('tipos_cargos_id')->references('id')->on('tipos_cargos');
-            $table->foreign('talleres_mecanicos_id')->references('id')->on('talleres_mecanicos');
             $table->timestamps();
         });
     }

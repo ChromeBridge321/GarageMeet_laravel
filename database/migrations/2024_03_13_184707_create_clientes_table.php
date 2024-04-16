@@ -15,9 +15,7 @@ return new class extends Migration
             $table->id();
             $table->date('Fecha_registro');
             $table->unsignedBigInteger('personas_id');
-            $table->unsignedBigInteger('talleres_mecanicos_id');
             $table->foreign('personas_id')->references('id')->on('personas');
-            $table->foreign('talleres_mecanicos_id')->references('id')->on('talleres_mecanicos');
             $table->timestamps();
         });
     }
