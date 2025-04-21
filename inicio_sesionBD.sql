@@ -56,7 +56,6 @@ CREATE TABLE `clientes` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `Fecha_registro` date NOT NULL,
   `personas_id` bigint(20) UNSIGNED NOT NULL,
-  `talleres_mecanicos_id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -70,18 +69,18 @@ TRUNCATE TABLE `clientes`;
 -- Volcado de datos para la tabla `clientes`
 --
 
-INSERT INTO `clientes` (`id`, `Fecha_registro`, `personas_id`, `talleres_mecanicos_id`, `created_at`, `updated_at`) VALUES
-(1, '2024-03-11', 1, 1, NULL, NULL),
-(2, '0000-00-00', 2, 1, NULL, NULL),
-(3, '0000-00-00', 3, 1, NULL, NULL),
-(62, '2024-03-16', 62, 1, NULL, NULL),
-(71, '2024-03-18', 71, 2, NULL, NULL),
-(85, '2024-03-18', 85, 2, NULL, NULL),
-(86, '2024-03-18', 86, 2, NULL, NULL),
-(87, '2024-03-18', 87, 2, NULL, NULL),
-(88, '2024-03-18', 88, 2, NULL, NULL),
-(89, '2024-03-18', 89, 2, NULL, NULL),
-(93, '2024-03-18', 93, 1, NULL, NULL);
+INSERT INTO `clientes` (`id`, `Fecha_registro`, `personas_id`, `created_at`, `updated_at`) VALUES
+(1, '2024-03-11', 1, NULL, NULL),
+(2, '0000-00-00', 2, NULL, NULL),
+(3, '0000-00-00', 3, NULL, NULL),
+(62, '2024-03-16', 62, NULL, NULL),
+(71, '2024-03-18', 71, NULL, NULL),
+(85, '2024-03-18', 85, NULL, NULL),
+(86, '2024-03-18', 86, NULL, NULL),
+(87, '2024-03-18', 87, NULL, NULL),
+(88, '2024-03-18', 88, NULL, NULL),
+(93, '2024-03-18', 93, NULL, NULL);
+(89, '2024-03-18', 89, NULL, NULL),
 
 -- --------------------------------------------------------
 
@@ -94,7 +93,6 @@ CREATE TABLE `empleados` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `personas_id` bigint(20) UNSIGNED NOT NULL,
   `tipos_cargos_id` bigint(20) UNSIGNED NOT NULL,
-  `talleres_mecanicos_id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -108,10 +106,10 @@ TRUNCATE TABLE `empleados`;
 -- Volcado de datos para la tabla `empleados`
 --
 
-INSERT INTO `empleados` (`id`, `personas_id`, `tipos_cargos_id`, `talleres_mecanicos_id`, `created_at`, `updated_at`) VALUES
-(4, 4, 3, 1, NULL, NULL),
-(71, 71, 3, 1, NULL, NULL),
-(72, 74, 2, 1, NULL, NULL);
+INSERT INTO `empleados` (`id`, `personas_id`, `tipos_cargos_id`, `created_at`, `updated_at`) VALUES
+(4, 4, 3,  NULL, NULL),
+(71, 71, 3, NULL, NULL),
+(72, 74, 2,  NULL, NULL);
 
 -- --------------------------------------------------------
 
